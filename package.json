@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "project_book-store-next",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,17 +8,26 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ivan-ISS/project_book-store-next.git"
+  },
+  "author": "Ivan-ISS",
   "dependencies": {
+    "@reduxjs/toolkit": "^2.2.3",
+    "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.1.4"
+    "react-redux": "^9.1.1",
+    "redux": "^5.0.1",
+    "sass": "^1.75.0"
   },
   "devDependencies": {
-    "typescript": "^5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.1.4"
+    "eslint-config-next": "14.1.4",
+    "typescript": "^5"
   }
 }
