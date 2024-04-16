@@ -1,0 +1,39 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.navigation {
+    font-size: $font-size-navigation;
+    font-weight: 700;
+
+    .list {
+        display: flex;
+        column-gap: 40px;
+
+        .link {
+            color: $base-gray;
+            text-transform: uppercase;
+
+            &:hover {
+                color: $base-black;
+                font-weight: 900;
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .navigation {
+
+        .list {
+            column-gap: 25px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .navigation {
+        display: none;
+    }
+}

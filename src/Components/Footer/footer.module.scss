@@ -1,0 +1,25 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.footer {
+    width: 100%;
+    border-top: 1px solid $base-black;
+
+    .container {
+        max-width: 1120px;
+        min-width: 300px;
+        margin: 0 auto;
+        padding: 0px 75px;
+        box-sizing: content-box;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .footer {
+        
+        .container {
+            padding: 0px 15px;
+        }
+    }
+}

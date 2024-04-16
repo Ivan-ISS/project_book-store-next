@@ -1,0 +1,26 @@
+
+.header {
+
+    .container {
+        min-height: 116px;
+        max-width: 1120px;
+        min-width: 300px;
+        margin: 0 auto;
+        padding: 0px 75px;
+        box-sizing: content-box;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .header {
+        
+        .container {
+            padding: 0px 15px;
+        }
+    }
+}

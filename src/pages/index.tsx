@@ -2,6 +2,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchBooks, setCurrentPage } from '@/redux/slices/booksSlice';
 import { RootState, RootDispatch } from '@/redux/store';
+import Layout from '../Components/Layout/layout';
+import Slider from '../Components/Common/Slider/slider';
 
 export default function Home() {
     const dispatch = useDispatch<RootDispatch>();
@@ -24,7 +26,8 @@ export default function Home() {
     };
 
     return (
-        <div>
+        <Layout>
+            <Slider />
             Контент для главной страницы
             <button onClick={() => handleClick()}>getBooks</button>
             {
@@ -32,6 +35,6 @@ export default function Home() {
                     <div key={index}>{book}</div>
                 ))
             }
-        </div>
+        </Layout>
     );
 }

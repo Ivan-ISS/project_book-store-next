@@ -10,16 +10,6 @@ export const fetchBooks = createAsyncThunk(
     }
 );
 
-/* export const fetchBooks = createAsyncThunk(
-    'books/fetchBooks',
-    async () => {
-      const response = await fetch('https://www.googleapis.com/books/v1/volumes?q=Subject:drama&&page=0');
-      const data = await response.json();
-      console.log('here ', data.items[0]);
-      return data.items;
-    }
-  ); */
-
 const booksSlice = createSlice({
     name: 'books',
     initialState: {
