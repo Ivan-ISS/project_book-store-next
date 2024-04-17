@@ -15,7 +15,7 @@ export interface UserToolsProps {
 export default function UserTools({ itemsTools }: UserToolsProps) {
     const { push } = useRouter();
 
-    const handleItemClick = (item: Item) => {
+    const handleItemClick = (item: Item) => {   // В зависимости от предназначения иконки назначаем ей обработчик
         switch (item.action) {
             case 'dropdown':
                 console.log('Dropdown menu clicked for icon:', item.icon);

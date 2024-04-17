@@ -13,14 +13,14 @@ import { itemsTools } from '@/data';
 
 import { Montserrat } from 'next/font/google';
 
-    const montserratFont = Montserrat({
-        weight: ['400', '500', '600', '700', '900'],
-        subsets: ['latin', 'cyrillic'],
-    });
+const montserratFont = Montserrat({
+    weight: ['400', '500', '600', '700', '900'],
+    subsets: ['latin', 'cyrillic'],
+});
 
 export default function Layout({ children }: PropsWithChildren) {
 
-    return ( 
+    return (
         <>
             <Head>
                 <title>Book store</title>

@@ -10,7 +10,7 @@ export default function BurgerButton({ children, ...props }: BurgerButtonProps) 
     const burgerButton = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        const handleClickOutside = (event:  MouseEvent) => {
+        const handleClickOutside = (event:  MouseEvent) => {    // Обработчик для клика вне меню для его закрытия
           if (burgerButton.current && !burgerButton.current.contains(event.target as Node)) {
             setMenuOpen(false);
           }
