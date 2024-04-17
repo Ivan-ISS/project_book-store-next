@@ -1,0 +1,39 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.promo {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    row-gap: 4px;
+    max-width: 150px;
+    padding: 102px 20px 20px;
+    color: $base-black;
+    font-size: clamp(12px, 1.2vw, 18px);
+    font-weight: 700;
+    box-shadow: 0px 24px 36px 0px rgba(53, 49, 84, 0.28);
+    text-transform: uppercase;
+}
+
+.cornflower {
+    background: #9e98dc;
+}
+
+.pink {
+    background: #ff8fe6;
+}
+
+@media (max-width: 1024px) {
+
+    .promo {
+        padding: 72px 10px 10px;
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .promo {
+        display: none;
+    }
+}
