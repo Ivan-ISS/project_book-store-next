@@ -23,13 +23,13 @@ export default function BurgerButton({ children, ...props }: BurgerButtonProps) 
         };
       }, []);
 
-    const onClickButton = () => {
+    const handleClick = () => {
         setMenuOpen(v => !v);
     };
 
     return (
         <div ref={burgerButton} className={styles.burgerWrap}>
-            <button {...props} className={`${styles.burgerButton} ${menuOpen ? styles.active : styles.inactive}`} onClick={onClickButton}>
+            <button {...props} className={`${styles.burgerButton} ${menuOpen ? styles.active : styles.inactive}`} onClick={handleClick}>
                 <span className={styles.band}></span>
                 <span className={styles.band}></span>
                 <span className={styles.band}></span>

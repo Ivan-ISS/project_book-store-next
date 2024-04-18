@@ -1,0 +1,28 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+
+.button {
+    cursor: pointer;
+    background: transparent;
+    text-transform: uppercase;
+    border: none;
+    padding: 18px 0;
+    font-size: $font-size-btn;
+    font-family: inherit;
+    font-weight: 700;
+    color: $base-button;
+    border: solid 1px $base-button;
+    max-width: 176px;
+    width: 100%;
+
+    &:hover {
+        background: rgba($base-button, 0.05)
+    }
+}
+
+.disabled {
+    opacity: 0.5;
+    border: solid 1px $base-gray;
+    color: $base-gray;
+}

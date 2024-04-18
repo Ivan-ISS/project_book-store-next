@@ -2,20 +2,20 @@ import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styles from './userTools.module.scss';
 
-export type Item = {
+export type TItem = {
     icon: string;
     action: 'dropdown' | 'none' | 'redirect';
     route?: string;
 }
 
 export interface UserToolsProps {
-    itemsTools: Item[];
+    itemsTools: TItem[];
 }
 
 export default function UserTools({ itemsTools }: UserToolsProps) {
     const { push } = useRouter();
 
-    const handleItemClick = (item: Item) => {   // В зависимости от предназначения иконки назначаем ей обработчик
+    const handleItemClick = (item: TItem) => {   // В зависимости от предназначения иконки назначаем ей обработчик
         switch (item.action) {
             case 'dropdown':
                 console.log('Dropdown menu clicked for icon:', item.icon);

@@ -1,5 +1,6 @@
 import { PropsWithChildren } from 'react';
 import Link from 'next/link';
+import styles from './layout.module.scss';
 import Head from 'next/head';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
@@ -7,7 +8,6 @@ import Navigation from '../Common/Navigation/navigation';
 import UserTools from '../Common/UserTools/userTools';
 import BurgerButton from '../Common/BurgerButton/burgerButton';
 import DropdownMenu from '../Common/DropdownMenu/dropdownMenu';
-import styles from './layout.module.scss';
 import { itemsNavigation } from '@/data';
 import { itemsTools } from '@/data';
 

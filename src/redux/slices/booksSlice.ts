@@ -2,8 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchBooks = createAsyncThunk(
     'books/fetchBooks',
-    async (/* { subject, page } */) => {
-        const reponse = await fetch(`api/books?subject=${'business'}`);
+    async (subject/* , page  */: string) => {
+        const reponse = await fetch(`api/books?subject=${subject}`);
         const data = await reponse.json();
         console.log(data.data[0]);
         return data;
@@ -14,12 +14,16 @@ const booksSlice = createSlice({
     name: 'books',
     initialState: {
         books: [] as any,
+        currentCategory: '',
         status: '',
         currentPage: 0,
     },
     reducers: {
         setCurrentPage(state, action) {
             state.currentPage = action.payload;
+        },
+        setCurrentCategory(state, action) {
+            state.currentCategory = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -40,4 +44,4 @@ const booksSlice = createSlice({
 });
 
 export default booksSlice.reducer;
-export const { setCurrentPage } = booksSlice.actions;
+export const { setCurrentPage, setCurrentCategory } = booksSlice.actions;

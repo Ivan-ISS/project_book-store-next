@@ -1,0 +1,156 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+
+.setBooks {
+    margin-left: -60px;
+    margin-bottom: 96px;
+    padding-top: 46px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    column-gap: 76px;
+    row-gap: 96px;
+}
+
+.bookCard {
+    display: flex;
+    column-gap: 36px;
+
+    .cover {
+        background: $base-gray-books-background;
+        box-shadow: 0px 24px 36px 0px rgba(53, 49, 84, 0.28);
+
+        .coverImg {
+            width: 100%;
+            height: 100%;
+            min-width: 180px;
+            max-width: 212px;
+            max-height: 300px;
+            object-fit: cover;
+        }
+    }
+
+    .info {
+        padding: 48px 0;
+        max-width: 176px;
+        min-width: 100px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 16px;
+        justify-content: space-between;
+
+        //font-family: "Open Sans";
+        font-weight: 400;
+        font-size: $font-size-book-info;
+
+        .data {
+            display: flex;
+            flex-direction: column;
+            row-gap: 4px;
+
+            .title {
+                font-weight: 700;
+                font-size: $font-size-book-title;
+                color: $base-black;
+            }
+
+            .rating {
+                display: flex;
+                column-gap: 6px;
+                flex-wrap: wrap;
+
+                .stars {
+                    display: flex;
+                    flex-wrap: nowrap;
+                }
+            }
+        }
+
+        .description {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            max-height: 41px;
+        }
+
+        .price {
+            font-weight: 700;
+            font-size: $font-size-book-price;
+            color: $base-black;
+            text-transform: uppercase
+        }
+    }
+}
+
+@media (max-width: 1170px) {
+
+    .setBooks {
+
+        .bookCard {
+
+            .info {
+                padding: 15px 0;
+            
+                .data {
+
+                    .title {
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .setBooks {
+        column-gap: 30px;
+        row-gap: 76px;
+
+        .bookCard {
+            column-gap: 10px;
+
+            .cover {
+
+                .coverImg {
+                    min-width: 140px;
+                }
+            }
+
+            .info {
+                padding: 5px 0;
+                row-gap: 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .setBooks {
+        margin-left: 0;
+        padding-top: 46px;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 1fr);
+        grid-auto-rows: 1fr;
+        row-gap: 56px;
+
+        .bookCard {
+
+            .cover {
+                min-width: 140px;
+                max-width: 212px;
+            }
+
+            .info {
+                padding: 1% 0;
+                row-gap: 10px;
+            }
+        }
+    }
+}

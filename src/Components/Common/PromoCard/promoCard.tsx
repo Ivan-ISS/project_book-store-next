@@ -1,7 +1,7 @@
 import { HTMLAttributes } from 'react';
 import Image from 'next/image';
-import arrow from '@/images/svg/arrow.svg';
 import styles from './promoCard.module.scss';
+import arrow from '@/images/svg/arrow.svg';
 
 export interface BlockProps extends HTMLAttributes<HTMLAnchorElement> {
     text: string,

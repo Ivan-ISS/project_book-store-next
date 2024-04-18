@@ -1,0 +1,24 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.performance {
+    margin-bottom: 105px;
+    position: relative;
+}
+
+.showcase {
+    display: flex;
+
+    .goods {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .showcase {
+        flex-direction: column;
+    }
+}

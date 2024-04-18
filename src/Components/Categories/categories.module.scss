@@ -1,0 +1,98 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.listCategories {
+    display: flex;
+    flex-direction: column;
+    row-gap: 23px;
+    max-width: 418px;
+    height: fit-content;
+    padding: 45px 138px 81px 158px;
+    background: $base-gray-background;
+    margin-left: -160px;
+
+    .itemCategory {
+        min-width: 140px;
+        max-height: 15px;
+    }
+    
+    .btnCategory {
+        background: transparent;
+        font-family: inherit;
+        font-weight: 500;
+        line-height: normal;
+        font-size: $font-size-categories-books;
+        color: $base-gray;
+        cursor: pointer;
+        position: relative;
+
+        &:hover::before/* ,
+        &:focus::before */ {
+            content: "";
+            position: absolute;
+            top: 4.5px;
+            left: -14px;
+            width: 6px;
+            height: 6px;
+            background: #756ad3;
+            border-radius: 50%;
+        }
+
+        &:hover/* ,
+        &:focus */ {
+            color: $base-black;
+            font-size: $font-size-categories-books-hover;
+            font-weight: 700;
+        }
+    }
+
+    .active::before {
+        content: "";
+        position: absolute;
+        top: 4.5px;
+        left: -14px;
+        width: 6px;
+        height: 6px;
+        background: #756ad3;
+        border-radius: 50%;
+    }
+
+    .active {
+        color: $base-black;
+        font-size: $font-size-categories-books-hover;
+        font-weight: 700;
+    }
+}
+
+@media (max-width: 1140px) {
+
+    .listCategories {
+        padding: 45px 80px 81px 158px;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    .listCategories {
+        max-width: 418px;
+        padding: 45px 60px 81px 158px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .listCategories {
+        align-self: start;
+        max-width: 100%;
+        min-width: 320px;
+        padding: 25px 10px 30px 17px;
+        margin-left: -15px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 15px;
+
+        .itemCategory {
+            min-width: 130px;
+        }
+    }
+}
