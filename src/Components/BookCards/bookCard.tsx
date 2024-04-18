@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import Image from 'next/image';
-import styles from './bookCardGroup.module.scss';
+import styles from './bookCard.module.scss';
 import Button from '../Common/Button/button';
 
 /* interface BookCardProps {

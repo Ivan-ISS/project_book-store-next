@@ -1,5 +1,5 @@
 import BookCard from './bookCard';
-import styles from './bookCardGroup.module.scss';
+import styles from './bookCard.module.scss';
 
 /* export interface BookCardGroupProps {
     ticketsData: ITicket[],
