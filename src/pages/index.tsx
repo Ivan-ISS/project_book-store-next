@@ -1,7 +1,10 @@
 // import Layout from "@/components/Layout/layout";
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchBooks, setCurrentPage } from '@/redux/slices/booksSlice';
+import { setBooksData, fetchBooks, setCurrentPage } from '@/redux/slices/booksSlice';
 import { RootState, RootDispatch } from '@/redux/store';
+import styles from '../styles/pageStyles/index.module.scss';
+import { IBookData, IBookDataResponse } from '@/types/typeBook';
 import Layout from '../Components/Layout/layout';
 import Slider from '../Components/Common/Slider/slider';
 import PromoCard from '../Components/Common/PromoCard/promoCard';
@@ -10,27 +13,47 @@ import Button from '../Components/Common/Button/button';
 import BookCardGroup from '@/Components/BookCards/bookCardGroup';
 import { slides } from '@/data';
 import { categories } from '@/data';
-import styles from '../styles/pageStyles/index.module.scss';
 
-export default function Home() {
+export interface HomeProps {
+    receivedBooksData: IBookData[];
+}
+
+export async function getStaticProps() {
+
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=Subject:${categories[0].nameInRequest}`);
+    const receivedData = await response.json();
+
+    let booksData: IBookData[] = [];
+    receivedData.items.forEach((item: IBookDataResponse) => {
+        booksData.push({
+            id: item.id,
+            imageCoverLinks: item.volumeInfo.imageLinks.thumbnail ? item.volumeInfo.imageLinks.thumbnail : null,
+            author: item.volumeInfo.authors ? item.volumeInfo.authors : null,
+            title: item.volumeInfo.title ? item.volumeInfo.title : null,
+            rating: item.volumeInfo.averageRating ? item.volumeInfo.averageRating : null,
+            review: item.volumeInfo.ratingsCount ? item.volumeInfo.ratingsCount : null,
+            description: item.volumeInfo.description ? item.volumeInfo.description : null,
+            retailPrice: item.saleInfo.retailPrice ? item.saleInfo.retailPrice : null,
+        });
+    });
+
+    return {
+        props: { receivedBooksData: booksData }
+    };
+}
+
+export default function Home({ receivedBooksData }: HomeProps) {
     const dispatch = useDispatch<RootDispatch>();
     const setCurrentPage = useSelector((state: RootState) => state.books.currentPage);
-    const books = useSelector((state: RootState) => state.books.books);
-
-    /* const fetchBooks = async () => {
-            const res = await fetch(`api/books?subject=${'business'}`);
-            const data = await res.json();
-            console.log(data);
-            return data;
-        }; */
+    const booksData = useSelector((state: RootState) => state.books.booksData);
 
     const handleClick = () => {
         dispatch(fetchBooks('business'));
     };
 
-    const click = () => {
-        console.log('here');
-    };
+    useEffect(() => {
+        dispatch(setBooksData(receivedBooksData));
+    }, []);
 
     return (
         <Layout>
@@ -42,15 +65,15 @@ export default function Home() {
             <section className={styles.showcase}>
                 <Categories categories={categories}/>
                 <div className={styles.goods}>
-                    <BookCardGroup/>
-                    <Button isDisabled={false} text={'BUY NOW'}/>
+                    <BookCardGroup booksData={booksData}/>
+                    <Button isDisabled={false} text={'Load more'}/>
                 </div>
             </section>
             Контент для главной страницы
             <button onClick={() => handleClick()}>getBooks</button>
             {
-                books.map((book: any, index: any) => (
-                    <div key={index}>{book}</div>
+                receivedBooksData.map((book: any, index: any) => (
+                    <div key={index}>{book.id}</div>
                 ))
             }
         </Layout>

@@ -34,8 +34,11 @@
     .item {
         cursor: pointer;
         width: fit-content;
-        color: $base-gray;
         font-size: $font-size-navigation;
+
+        .link {
+            color: $base-gray;
+        }
 
         &:hover {
             font-weight: 700;

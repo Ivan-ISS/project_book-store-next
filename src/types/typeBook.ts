@@ -20,14 +20,14 @@ export interface IBookDataResponse {
 
 export interface IBookData {
     id: string,
-    imageCoverLinks: string,
-    author: string[],
-    title: string,
-    rating: number,
-    review: number,
-    description: string,
+    imageCoverLinks: string | null,
+    author: string[] | null,
+    title: string | null,
+    rating: number | null,
+    review: number | null,
+    description: string | null,
     retailPrice: {
         amount: number;
         currencyCode: string;
-    },
+    } | null,
 }

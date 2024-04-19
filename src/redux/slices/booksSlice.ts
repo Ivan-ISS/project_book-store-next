@@ -1,24 +1,28 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { IBookData } from '@/types/typeBook';
 
 export const fetchBooks = createAsyncThunk(
     'books/fetchBooks',
     async (subject/* , page  */: string) => {
-        const reponse = await fetch(`api/books?subject=${subject}`);
-        const data = await reponse.json();
-        console.log(data.data[0]);
-        return data;
+        const response = await fetch(`api/books?subject=${subject}`);
+        const data = await response.json();
+        console.log(data.booksData[0]);
+        return data.booksData;
     }
 );
 
 const booksSlice = createSlice({
     name: 'books',
     initialState: {
-        books: [] as any,
+        booksData: [] as IBookData[],
         currentCategory: '',
         status: '',
         currentPage: 0,
     },
     reducers: {
+        setBooksData(state, action: PayloadAction<IBookData[]>) {
+            state.booksData = action.payload;
+        },
         setCurrentPage(state, action) {
             state.currentPage = action.payload;
         },
@@ -31,10 +35,10 @@ const booksSlice = createSlice({
             .addCase(fetchBooks.pending, (state) => {
                 state.status = 'in progress';
             })
-            .addCase(fetchBooks.fulfilled, (state, action) => {
+            .addCase(fetchBooks.fulfilled, (state, action: PayloadAction<IBookData[]>) => {
                 state.status = 'successfully';
-                /* console.log(action.payload);
-                state.books = [...state.books, ...action.payload]; */
+                console.log('Payload ', action.payload);
+                state.booksData = [...state.booksData, ...action.payload];
                 state.currentPage += 1;
             })
             .addCase(fetchBooks.rejected, (state, action ) => {
@@ -44,4 +48,4 @@ const booksSlice = createSlice({
 });
 
 export default booksSlice.reducer;
-export const { setCurrentPage, setCurrentCategory } = booksSlice.actions;
+export const { setBooksData, setCurrentPage, setCurrentCategory } = booksSlice.actions;

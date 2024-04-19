@@ -3,13 +3,13 @@ import { RootState, RootDispatch } from '@/redux/store';
 import { fetchBooks, setCurrentCategory } from '@/redux/slices/booksSlice';
 import styles from './categories.module.scss';
 
-export type TCategory = {
+export interface ICategory {
     nameCategory: string;
     nameInRequest: string;
 }
 
 export interface CategoriesProps {
-    categories: TCategory[];
+    categories: ICategory[];
 }
 
 export default function Categories({ categories }: CategoriesProps) {

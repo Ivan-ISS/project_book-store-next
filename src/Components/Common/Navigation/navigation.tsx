@@ -12,7 +12,7 @@ export default function Navigation({ itemsNavigation }: NavigationProps) {
             <ul className={styles.list}>
                 {itemsNavigation.map((item, index) => (
                     <li key={index} className={styles.item}>
-                        <Link href={item === 'books' ? '/' : '#'} className={styles.link}>
+                        <Link href={item === 'books' ? '/' : item} className={styles.link}>
                             {item}
                         </Link>
                     </li>

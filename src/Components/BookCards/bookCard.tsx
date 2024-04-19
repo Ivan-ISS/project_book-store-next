@@ -1,13 +1,14 @@
-import { PropsWithChildren } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import Image from 'next/image';
 import styles from './bookCard.module.scss';
+import { IBookData } from '@/types/typeBook';
 import Button from '../Common/Button/button';
 
-/* interface BookCardProps {
-    bookData: ITicket,
-} */
+export interface BookCardProps extends ButtonHTMLAttributes<HTMLDivElement>{
+    bookData: IBookData;
+}
 
-export default function BookCard(/* { bookData }: BookCardProps */) {
+export default function BookCard({ bookData, ...props }: BookCardProps) {
 
     return (
         <div className={styles.bookCard}>
@@ -34,7 +35,7 @@ export default function BookCard(/* { bookData }: BookCardProps */) {
                 </div>
                 <p className={styles.description}>No description No description No description No description No description No description No description No description</p>
                 <span className={styles.price}>555</span>
-                <Button isDisabled={false} text={'BUY NOW'}/>
+                <Button isDisabled={false} text={'Buy now'}/>
             </div>
         </div>
     );

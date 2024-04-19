@@ -1,17 +1,30 @@
-import BookCard from './bookCard';
+import { ButtonHTMLAttributes } from 'react';
 import styles from './bookCard.module.scss';
+import { IBookData } from '@/types/typeBook';
+import BookCard from './bookCard';
+import { categories } from '@/data';
 
-/* export interface BookCardGroupProps {
-    ticketsData: ITicket[],
+export interface BookCardGroupProps extends ButtonHTMLAttributes<HTMLDivElement>{
+    booksData: IBookData[];
+}
+
+/* export async function getStaticProps() {
+
+    const response = await fetch(`api/books?subject=${categories[0].nameInRequest}`);
+    const receivedData: BookCardGroupProps = await response.json();
+  
+    return {
+        props: { booksData: receivedData }
+    };
 } */
 
-export default function BookCardGroup({/* { ticketsData }: BookCardGroupProps */...props}) {
+export default function BookCardGroup({ booksData, ...props }: BookCardGroupProps) {
 
     return (
         <div {...props} className={styles.setBooks}>
-            {[1, 2, 3, 4, 5, 6].map((_, index) => (
+            {booksData.map((bookData, index) => (
                 <li key={index}>
-                    <BookCard/>
+                    <BookCard bookData={bookData}/>
                 </li>
             ))}
         </div>
