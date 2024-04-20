@@ -13,7 +13,7 @@ export default function BookCard({ bookData, ...props }: BookCardProps) {
     return (
         <div {...props} className={styles.bookCard}>
             <div className={styles.cover}>
-                <Image className={styles.coverImg} src=/* {`${bookData.imageCoverLinks ? bookData.imageCoverLinks :  */'/images/png/placeholder.png'/* }`} */ width={212} height={300} alt="Book cover" />
+                <Image className={styles.coverImg} src={`${bookData.imageCoverLinks ? bookData.imageCoverLinks : '/images/png/placeholder.png'}`} width={636} height={900} alt="Book cover" />
             </div>
             <div className={styles.info}>
                 <div className={styles.data}>
@@ -27,7 +27,7 @@ export default function BookCard({ bookData, ...props }: BookCardProps) {
                                 m12.10257,0.03648l1.80568,3.5147l3.90062,0.6312l-2.78465,2.8034l0.60506,3.9048l-3.52671,-1.7821l-3.52671,1.7821l0.60506,-3.9048l-2.78469,-2.8034l3.90066,-0.6312l1.80568,-3.5147z
                                 m12.28205,0.03647l1.80568,3.5147l3.90062,0.6312l-2.78465,2.8034l0.60506,3.9048l-3.52671,-1.7821l-3.52671,1.7821l0.60506,-3.9048l-2.78469,-2.8034l3.90066,-0.6312l1.80568,-3.5147z
                                 m12.33333,0.03648l1.80568,3.5147l3.90062,0.6312l-2.78465,2.8034l0.60506,3.9048l-3.52671,-1.7821l-3.52671,1.7821l0.60506,-3.9048l-2.78469,-2.8034l3.90066,-0.6312l1.80568,-3.5147z" 
-                                fill="#f2c94c" clip-path={`inset(0 ${bookData.rating ? (1 - bookData.rating / 5) * 100 : null}% 0 0)`} id="svg_1"/>
+                                fill="#f2c94c" clipPath={`inset(0 ${bookData.rating ? (1 - bookData.rating / 5) * 100 : 100}% 0 0)`} id="svg_1"/>
                             </svg>
                         </div>
                         <span className={styles.review}>{bookData.review}</span>

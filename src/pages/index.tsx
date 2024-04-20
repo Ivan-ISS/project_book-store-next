@@ -21,7 +21,7 @@ export interface HomeProps {
 
 export async function getStaticProps() {
 
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=Subject:${categories[0].nameInRequest}&&page=0`);
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=Subject:${categories[0].nameInRequest}&startIndex=0&maxResults=6`);
     const data: IDataResponse = await response.json();
 
     return {
@@ -35,7 +35,7 @@ export default function Home({ receivedData }: HomeProps) {
     const booksData = useSelector((state: RootState) => state.books.booksData);
 
     const handleClick = () => {
-        dispatch(fetchBooks({subject: 'business', page: 0}));
+        dispatch(fetchBooks({subject: 'Architecture', startIndex: 6}));
     };
 
     useEffect(() => {

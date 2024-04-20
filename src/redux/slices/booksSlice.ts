@@ -3,13 +3,13 @@ import { IBookData } from '@/types/typeBook';
 
 export interface fetchBookParams {
     subject: string;
-    page: number
+    startIndex: number
 }
 
 export const fetchBooks = createAsyncThunk(
     'books/fetchBooks',
-    async ({ subject, page }: fetchBookParams) => {
-        const response = await fetch(`api/books?subject=${subject}&page=${page}`);
+    async ({ subject, startIndex }: fetchBookParams) => {
+        const response = await fetch(`api/books?subject=${subject}&startIndex=${startIndex}`);
         const data = await response.json();
         console.log(data.booksData[0]);
         return data.booksData;

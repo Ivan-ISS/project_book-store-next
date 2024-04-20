@@ -4,9 +4,14 @@ import prepareData from '@/utils/prepareData';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
-    const { subject, page } = req.query;
+    const { subject, startIndex } = req.query;
 
-    const params = {q: `Subject:${subject}`, page: `page=${page}`};
+    const params = {
+        q: `Subject:${subject}`,
+        startIndex: `${startIndex}`,
+        maxResults: '6'
+    };
+    
     const gbooksReqParams = new URLSearchParams(params);
     // gbooksReqParams.set('q', `Subject:${subject}`);
     
