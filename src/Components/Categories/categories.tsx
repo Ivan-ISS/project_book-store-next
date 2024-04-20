@@ -22,7 +22,7 @@ export default function Categories({ categories }: CategoriesProps) {
                 <li key={index} className={styles.itemCategory}>
                     <button
                         className={`${styles.btnCategory} ${category.nameCategory === currentCategory ? styles.active : ''}`}
-                        onClick={() => { dispatch(fetchBooks(category.nameInRequest)); dispatch(setCurrentCategory(category.nameCategory)); }}
+                        /* onClick={() => { dispatch(fetchBooks(category.nameInRequest)); dispatch(setCurrentCategory(category.nameCategory)); }} */
                     >
                         {category.nameCategory}
                     </button>

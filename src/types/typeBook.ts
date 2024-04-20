@@ -1,4 +1,4 @@
-export interface IBookDataResponse {
+export interface IBookResponse {
     id: string;
     volumeInfo: {
         title: string;
@@ -16,6 +16,10 @@ export interface IBookDataResponse {
             currencyCode: string;
         }
     }
+};
+
+export interface IDataResponse {
+    items: IBookResponse[];
 };
 
 export interface IBookData {

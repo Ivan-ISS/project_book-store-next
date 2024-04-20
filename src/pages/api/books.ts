@@ -1,33 +1,21 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { IBookDataResponse, IBookData } from '@/types/typeBook';
+import { IDataResponse/* , IBookDataResponse, IBookData */ } from '@/types/typeBook';
+import prepareData from '@/utils/prepareData';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     const { subject, page } = req.query;
 
-    const gbooksReqParams = new URLSearchParams();
-    gbooksReqParams.set('q', `Subject:${subject}`);
+    const params = {q: `Subject:${subject}`, page: `page=${page}`};
+    const gbooksReqParams = new URLSearchParams(params);
+    // gbooksReqParams.set('q', `Subject:${subject}`);
     
     const response = await fetch(`https://www.googleapis.com/books/v1/volumes?${gbooksReqParams.toString()}`);
     
-    const data = await response.json();
-
-    let booksData: IBookData[] = [];
-    data.items.forEach((item: IBookDataResponse) => {
-        booksData.push({
-            id: item.id,
-            imageCoverLinks: item.volumeInfo.imageLinks?.thumbnail,
-            author: item.volumeInfo.authors,
-            title: item.volumeInfo.title,
-            rating: item.volumeInfo.averageRating,
-            review: item.volumeInfo.ratingsCount,
-            description: item.volumeInfo.description,
-            retailPrice: item.saleInfo.retailPrice,
-        });
-    });
+    const data: IDataResponse = await response.json();
 
     res.status(200).send({
-        booksData: booksData,
+        booksData: prepareData(data),
     });
 
     if (!req.query.subject) {

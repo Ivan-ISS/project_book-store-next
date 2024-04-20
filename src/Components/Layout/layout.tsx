@@ -12,9 +12,15 @@ import { itemsNavigation } from '@/data';
 import { itemsTools } from '@/data';
 
 import { Montserrat } from 'next/font/google';
+import { Open_Sans } from 'next/font/google';
 
 const montserratFont = Montserrat({
     weight: ['400', '500', '600', '700', '900'],
+    subsets: ['latin', 'cyrillic'],
+});
+
+const openSansFont = Open_Sans({
+    weight: ['400'],
     subsets: ['latin', 'cyrillic'],
 });
 

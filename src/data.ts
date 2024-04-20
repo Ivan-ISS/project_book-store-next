@@ -2,7 +2,7 @@
 export const itemsNavigation = [ 'books', 'audiobooks', 'stationery & gifts', 'blog' ];
 
 // Инструменты пользователя
-export type Item = {
+export interface Item {
     icon: string;
     action: 'dropdown' | 'none' | 'redirect';
     route?: string;

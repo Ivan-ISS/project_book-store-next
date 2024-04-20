@@ -1,10 +1,15 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { IBookData } from '@/types/typeBook';
 
+export interface fetchBookParams {
+    subject: string;
+    page: number
+}
+
 export const fetchBooks = createAsyncThunk(
     'books/fetchBooks',
-    async (subject/* , page  */: string) => {
-        const response = await fetch(`api/books?subject=${subject}`);
+    async ({ subject, page }: fetchBookParams) => {
+        const response = await fetch(`api/books?subject=${subject}&page=${page}`);
         const data = await response.json();
         console.log(data.booksData[0]);
         return data.booksData;
