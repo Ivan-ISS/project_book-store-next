@@ -6,7 +6,7 @@ export default function prepareData(data: IDataResponse): IBookData[] {
     data.items.forEach((item: IBookResponse) => {
         booksData.push({
             id: item.id,
-            imageCoverLinks: item.volumeInfo.imageLinks.thumbnail ? item.volumeInfo.imageLinks.thumbnail : null,
+            imageCoverLinks: item.volumeInfo.imageLinks?.thumbnail ? item.volumeInfo.imageLinks.thumbnail : null,
             author: item.volumeInfo.authors ? item.volumeInfo.authors : null,
             title: item.volumeInfo.title ? item.volumeInfo.title : null,
             rating: item.volumeInfo.averageRating ? item.volumeInfo.averageRating : null,

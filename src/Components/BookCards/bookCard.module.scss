@@ -25,17 +25,17 @@
         .coverImg {
             width: 100%;
             height: 100%;
-            min-width: 180px;
+            min-width: 212px;
             max-width: 212px;
             max-height: 300px;
-            object-fit: cover;
+            object-fit: scale-down;
         }
     }
 
     .info {
         padding: 48px 0;
         max-width: 176px;
-        min-width: 100px;
+        min-width: 80px;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -51,7 +51,22 @@
             flex-direction: column;
             row-gap: 4px;
 
+            .author {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                max-height: 13px;
+            }
+
             .title {
+                display: -webkit-box;
+                -webkit-line-clamp: 1;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                max-height: 19px;
+
+                word-break: break-word;
                 font-weight: 700;
                 font-size: $font-size-book-title;
                 color: $base-black;
@@ -92,6 +107,13 @@
 
         .bookCard {
 
+            .cover {
+
+                .coverImg {
+                    min-width: 180px;
+                }
+            }
+
             .info {
                 padding: 15px 0;
             
@@ -118,7 +140,7 @@
             .cover {
 
                 .coverImg {
-                    min-width: 140px;
+                    min-width: 130px;
                 }
             }
 
@@ -143,8 +165,7 @@
         .bookCard {
 
             .cover {
-                min-width: 140px;
-                max-width: 212px;
+                width: 140px;
             }
 
             .info {

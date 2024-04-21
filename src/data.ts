@@ -40,3 +40,9 @@ export const categories = [
     { nameCategory: 'Technology', nameInRequest: 'Technology' },
     { nameCategory: 'Travel & Maps', nameInRequest: 'Travel' },
 ];
+
+// Параметры запроса по умолчанию
+export const defaultCategory = categories[0];
+export const defStartIndex = 0;
+export const defMaxResults = 6;
+

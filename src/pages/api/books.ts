@@ -1,15 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { IDataResponse/* , IBookDataResponse, IBookData */ } from '@/types/typeBook';
+import { IDataResponse } from '@/types/typeBook';
 import prepareData from '@/utils/prepareData';
+import { defMaxResults } from '@/data';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     const { subject, startIndex } = req.query;
 
     const params = {
-        q: `Subject:${subject}`,
+        q: `subject:${subject}`,
         startIndex: `${startIndex}`,
-        maxResults: '6'
+        maxResults: `${defMaxResults}`
     };
     
     const gbooksReqParams = new URLSearchParams(params);

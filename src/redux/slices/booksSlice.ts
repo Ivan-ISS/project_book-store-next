@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { defaultCategory, defStartIndex } from '@/data';
 import { IBookData } from '@/types/typeBook';
 
 export interface fetchBookParams {
@@ -11,7 +12,7 @@ export const fetchBooks = createAsyncThunk(
     async ({ subject, startIndex }: fetchBookParams) => {
         const response = await fetch(`api/books?subject=${subject}&startIndex=${startIndex}`);
         const data = await response.json();
-        console.log(data.booksData[0]);
+        // console.log(data.booksData[0]);
         return data.booksData;
     }
 );
@@ -20,16 +21,16 @@ const booksSlice = createSlice({
     name: 'books',
     initialState: {
         booksData: [] as IBookData[],
-        currentCategory: '',
+        currentCategory: defaultCategory.nameCategory,
+        startIndex: defStartIndex,
         status: '',
-        currentPage: 0,
     },
     reducers: {
         setBooksData(state, action: PayloadAction<IBookData[]>) {
             state.booksData = action.payload;
         },
-        setCurrentPage(state, action) {
-            state.currentPage = action.payload;
+        setStartIndex(state, action) {
+            state.startIndex = action.payload;
         },
         setCurrentCategory(state, action) {
             state.currentCategory = action.payload;
@@ -44,7 +45,6 @@ const booksSlice = createSlice({
                 state.status = 'successfully';
                 console.log('Payload ', action.payload);
                 state.booksData = [...state.booksData, ...action.payload];
-                state.currentPage += 1;
             })
             .addCase(fetchBooks.rejected, (state, action ) => {
                 state.status = 'download failed';
@@ -53,4 +53,4 @@ const booksSlice = createSlice({
 });
 
 export default booksSlice.reducer;
-export const { setBooksData, setCurrentPage, setCurrentCategory } = booksSlice.actions;
+export const { setBooksData, setStartIndex, setCurrentCategory } = booksSlice.actions;

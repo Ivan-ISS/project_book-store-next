@@ -17,7 +17,7 @@ export default function BookCard({ bookData, ...props }: BookCardProps) {
             </div>
             <div className={styles.info}>
                 <div className={styles.data}>
-                    <p className={styles.author}>{bookData.author}</p>
+                    <p className={styles.author}>{bookData.author ? bookData.author?.join(', ') : 'Author unknown'}</p>
                     <h3 className={styles.title}>{bookData.title}</h3>
                     <div className={styles.rating}>
                         <div className={styles.stars}>
@@ -27,14 +27,15 @@ export default function BookCard({ bookData, ...props }: BookCardProps) {
                                 m12.10257,0.03648l1.80568,3.5147l3.90062,0.6312l-2.78465,2.8034l0.60506,3.9048l-3.52671,-1.7821l-3.52671,1.7821l0.60506,-3.9048l-2.78469,-2.8034l3.90066,-0.6312l1.80568,-3.5147z
                                 m12.28205,0.03647l1.80568,3.5147l3.90062,0.6312l-2.78465,2.8034l0.60506,3.9048l-3.52671,-1.7821l-3.52671,1.7821l0.60506,-3.9048l-2.78469,-2.8034l3.90066,-0.6312l1.80568,-3.5147z
                                 m12.33333,0.03648l1.80568,3.5147l3.90062,0.6312l-2.78465,2.8034l0.60506,3.9048l-3.52671,-1.7821l-3.52671,1.7821l0.60506,-3.9048l-2.78469,-2.8034l3.90066,-0.6312l1.80568,-3.5147z" 
-                                fill="#f2c94c" clipPath={`inset(0 ${bookData.rating ? (1 - bookData.rating / 5) * 100 : 100}% 0 0)`} id="svg_1"/>
+                                fill={`${bookData.review ? '#f2c94c' : '#eeedf5'}`}
+                                clipPath={`inset(0 ${bookData.rating ? (1 - bookData.rating / 5) * 100 : 0}% 0 0)`} id="svg_1"/>
                             </svg>
                         </div>
-                        <span className={styles.review}>{bookData.review}</span>
+                        <span className={styles.review}>{bookData.review ? bookData.review + ' review' : 'No views'}</span>
                     </div>
                 </div>
-                <p className={styles.description}>{bookData.description}</p>
-                <span className={styles.price}>{bookData.retailPrice?.amount}</span>
+                <p className={styles.description}>{bookData.description ? bookData.description : 'No description'}</p>
+                <span className={styles.price}>{bookData.retailPrice ? bookData.retailPrice.amount + ' ' + bookData.retailPrice.currencyCode : null}</span>
                 <Button isDisabled={false} text={'Buy now'}/>
             </div>
         </div>
