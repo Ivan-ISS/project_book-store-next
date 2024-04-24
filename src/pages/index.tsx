@@ -28,6 +28,10 @@ export async function getStaticProps() {
     };
 }
 
+/* console.log('UserData:', localStorage.getItem('persist:root'));
+const a = localStorage.getItem('persist:root');
+if (a) console.log('PARSE ', JSON.parse(a)); */
+
 export default function Home({ receivedData }: HomeProps) {
     const dispatch = useDispatch<RootDispatch>();
     const startIndex = useSelector((state: RootState) => state.books.startIndex);
@@ -59,7 +63,7 @@ export default function Home({ receivedData }: HomeProps) {
                 <Categories categories={categories}/>
                 <div className={styles.goods}>
                     <BookCardGroup booksData={booksData}/>
-                    <Button onClick={() => handleLoadMore()} isDisabled={false} text={'Load more'}/>
+                    <Button onClick={() => handleLoadMore()} isDisabled={false} text={'Load more'} fontSize={'small'} color={'transparent'}/>
                 </div>
             </section>
             Контент для главной страницы

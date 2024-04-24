@@ -46,3 +46,8 @@ export const defaultCategory = categories[0];
 export const defStartIndex = 0;
 export const defMaxResults = 6;
 
+// Поля формы авторизации
+export const formFileds = [ 'Email', 'Password' ];
+
+// Кнопки меню профиля
+export const profileButtons = [ 'profile', 'sign out' ];

@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, useState, useEffect, useRef } from 'react';
 import styles from './burgerButton.module.scss';
 
 export interface BurgerButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-    children?: JSX.Element
+    children?: JSX.Element;
 }
 
 export default function BurgerButton({ children, ...props }: BurgerButtonProps) {
@@ -11,15 +11,15 @@ export default function BurgerButton({ children, ...props }: BurgerButtonProps) 
 
     useEffect(() => {
         const handleClickOutside = (event:  MouseEvent) => {    // Обработчик для клика вне меню для его закрытия
-          if (burgerButton.current && !burgerButton.current.contains(event.target as Node)) {
-            setMenuOpen(false);
-          }
+            if (burgerButton.current && !burgerButton.current.contains(event.target as Node)) {
+                setMenuOpen(false);
+            }
         };
     
         document.addEventListener('click', handleClickOutside);
     
         return () => {
-          document.removeEventListener('click', handleClickOutside);
+            document.removeEventListener('click', handleClickOutside);
         };
       }, []);
 

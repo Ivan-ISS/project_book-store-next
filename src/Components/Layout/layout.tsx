@@ -1,4 +1,6 @@
 import { PropsWithChildren } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/redux/store';
 import Link from 'next/link';
 import styles from './layout.module.scss';
 import Head from 'next/head';
@@ -8,8 +10,10 @@ import Navigation from '../Common/Navigation/navigation';
 import UserTools from '../Common/UserTools/userTools';
 import BurgerButton from '../Common/BurgerButton/burgerButton';
 import DropdownMenu from '../Common/DropdownMenu/dropdownMenu';
+import LoginMenu from '../Common/LoginMenu/loginMenu';
 import { itemsNavigation } from '@/data';
 import { itemsTools } from '@/data';
+import { profileButtons } from '@/data';
 
 import { Montserrat } from 'next/font/google';
 import { Open_Sans } from 'next/font/google';
@@ -25,6 +29,7 @@ const openSansFont = Open_Sans({
 });
 
 export default function Layout({ children }: PropsWithChildren) {
+    const token = useSelector((state: RootState) => state.auth.token);
 
     return (
         <>
@@ -44,7 +49,9 @@ export default function Layout({ children }: PropsWithChildren) {
                         <div>Bookshop</div>
                     </Link>
                     <Navigation itemsNavigation={itemsNavigation}/>
-                    <UserTools itemsTools={itemsTools}/>
+                    <UserTools itemsTools={itemsTools}>
+                        {token ? <DropdownMenu itemsMenu={profileButtons}/> : <LoginMenu/>}
+                    </UserTools>
                 </Header>
                 <main className={styles.main}>
                     <div className={styles.container}>{children}</div>

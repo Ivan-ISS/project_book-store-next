@@ -1,0 +1,65 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.field {
+    font-weight: 700;
+    font-size: 12px;
+    align-self: center;
+
+    .label {
+        color: $base-black;
+    }
+
+    .input {
+        margin: 9px 0 15px 0;
+        padding: 10px;
+        outline: none;
+        max-width: 176px;
+        min-height: 35px;
+        text-transform: lowercase;
+
+        &::placeholder {
+            opacity: 0.7;
+            color: $base-black;
+        }
+    }
+
+/*     .input:valid {
+        border: 1px solid $base-button;
+        color: $base-button;
+    }
+
+    .input:invalid {
+        border: 1px solid $base-red;
+        color: $base-red;
+
+        &::placeholder {
+            color: $base-red;
+        }
+    } */
+
+    .valid {
+        border: 1px solid $base-button;
+        color: $base-button;
+    }
+
+    .invalid {
+        border: 1px solid $base-red;
+        color: $base-red;
+
+        &::placeholder {
+            color: $base-red;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .field {
+
+        .input {
+            margin: 5px 0 8px 0;
+            max-width: 135px;
+        }
+    }
+}

@@ -4,25 +4,41 @@
 
 .button {
     cursor: pointer;
-    background: transparent;
     text-transform: uppercase;
     border: none;
-    padding: 18px 0;
-    font-size: $font-size-btn;
     font-family: inherit;
     font-weight: 700;
-    color: $base-button;
-    border: solid 1px $base-button;
     max-width: 176px;
     width: 100%;
-
-    &:hover {
-        background: rgba($base-button, 0.05)
-    }
 }
 
 .disabled {
     opacity: 0.5;
     border: solid 1px $base-gray;
     color: $base-gray;
+}
+
+.big {
+    font-size: $font-size-btn-big;
+    padding: 8px 0;
+}
+
+.small {
+    font-size: $font-size-btn-small;
+    padding: 18px 0;
+}
+
+.transparent {
+    background: transparent;
+    border: solid 1px $base-button;
+    color: $base-button;
+
+    &:hover {
+        background: rgba($base-button, 0.05)
+    }
+}
+
+.purple {
+    background: $base-purple;
+    color: $base-white;
 }
