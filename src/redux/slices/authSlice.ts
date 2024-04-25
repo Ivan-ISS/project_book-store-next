@@ -45,6 +45,9 @@ const authSlice = createSlice({
             state.email = action.payload.email;
             state.password = action.payload.password;
         },
+        addToBag(state, action: PayloadAction<IBookData>) {
+            state.bag.push(action.payload);
+        },
         signOut(state) {
             state.token = null;
         },
@@ -71,4 +74,4 @@ const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
-export const { setDataUser, signOut } = authSlice.actions;
+export const { signOut, setDataUser, addToBag } = authSlice.actions;

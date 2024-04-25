@@ -1,7 +1,11 @@
 import { ButtonHTMLAttributes } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, RootDispatch } from '@/redux/store';
+import { addToBag } from '@/redux/slices/authSlice';
 import Image from 'next/image';
 import styles from './bookCard.module.scss';
 import { IBookData } from '@/types/typeBook';
+import checkingBooksInShopBag from '@/utils/checkingBooksInShopBag';
 import Button from '../Common/Button/button';
 
 export interface BookCardProps extends ButtonHTMLAttributes<HTMLDivElement>{
@@ -9,6 +13,14 @@ export interface BookCardProps extends ButtonHTMLAttributes<HTMLDivElement>{
 }
 
 export default function BookCard({ bookData, ...props }: BookCardProps) {
+    const dispatch = useDispatch<RootDispatch>();
+    const booksInBag = useSelector((state: RootState) => state.auth.bag);
+
+    const handleClick = (bookData: IBookData) => {
+        if (!checkingBooksInShopBag(bookData, booksInBag)) {
+            dispatch(addToBag(bookData));
+        }
+    };
 
     return (
         <div {...props} className={styles.bookCard}>
@@ -36,7 +48,12 @@ export default function BookCard({ bookData, ...props }: BookCardProps) {
                 </div>
                 <p className={styles.description}>{bookData.description ? bookData.description : 'No description'}</p>
                 <span className={styles.price}>{bookData.retailPrice ? bookData.retailPrice.amount + ' ' + bookData.retailPrice.currencyCode : null}</span>
-                <Button isDisabled={false} text={'Buy now'} fontSize={'small'} color={'transparent'}/>
+                <Button
+                    text={checkingBooksInShopBag(bookData, booksInBag) ? 'In the cart' : 'Buy now'} fontSize={'small'}
+                    color={'transparent'}
+                    onClick={() => handleClick(bookData)}
+                    isDisabled={checkingBooksInShopBag(bookData, booksInBag)}
+                />
             </div>
         </div>
     );
