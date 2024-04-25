@@ -54,7 +54,7 @@ const authSlice = createSlice({
             const bookIndex = state.bag.findIndex((book) => book.id === id);
             
             if (bookIndex !== -1) {
-                if (!quantity) {
+                if (quantity < 1) {
                     state.bag.splice(bookIndex, 1);
                 } else {
                     state.bag[bookIndex].quantity = quantity;

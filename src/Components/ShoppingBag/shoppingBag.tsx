@@ -30,8 +30,9 @@ export default function ShoppingBag({ booksInBag, ...props }: ShoppingBagProps) 
                     <Fragment key={index}>
                         <BookCardInBag bookInBag={bookInBag}/>
                         <Counter
-                            currentAccount={bookInBag.quantity}
                             idEntity={bookInBag.id}
+                            currentAccount={bookInBag.quantity}
+                            indicatorOfChange={booksInBag.length}
                             handleClickCounter={(id, quantity) => handleClickCounter(id, quantity)}
                         />
                         <p>{`${bookInBag.retailPrice?.amount} ${bookInBag.retailPrice?.currencyCode}`}</p>

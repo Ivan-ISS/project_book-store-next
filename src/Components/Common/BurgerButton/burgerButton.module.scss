@@ -30,7 +30,7 @@
     .active {
         transition: 0.3s ease;
         rotate: 90deg;
-        background: $base-gray-background;
+        background: rgba($base-gray, 0.2);
         box-shadow: 1px 2px 5px rgba($base-black, 0.4);
         border-radius: 25%;
     }

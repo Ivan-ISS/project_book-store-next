@@ -17,9 +17,10 @@
     grid-auto-rows: auto;
     // column-gap: 76px;
     row-gap: 78px;
+    font-weight: 700;
+
 
     .nameColumn {
-        font-weight: 700;
         font-size: 10px;
         text-transform: uppercase;
         color: $base-gray;

@@ -2,5 +2,31 @@
 @import "/src/styles/_variables";
 
 .counter {
+    display: flex;
+    max-width: max-content;
+    max-height: 45px;
+    width: 100%;
+    border: 1px solid rgba($base-gray, 0.2);
 
+    .btnChange{
+        cursor: pointer;
+        padding: 10px 16px;
+        min-width: 22px;
+        box-sizing: content-box;
+        font-size: 24px;
+        background: transparent;
+
+        &:hover {
+            box-shadow: 0 0 5px rgba($base-black, 0.4);
+        }
+
+        &:active {
+            background: rgba($base-gray, 0.2);
+            box-shadow: 0 0 5px rgba($base-black, 0.4);
+        }
+    }
+
+    .quantity {
+        padding: 12px 31px;
+    }
 }
