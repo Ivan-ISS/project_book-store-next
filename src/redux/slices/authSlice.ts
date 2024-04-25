@@ -50,6 +50,7 @@ const authSlice = createSlice({
         },
         signOut(state) {
             state.token = null;
+            state.bag = [];
         },
     },
     extraReducers: (builder) => {

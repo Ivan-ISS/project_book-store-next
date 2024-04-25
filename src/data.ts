@@ -4,14 +4,15 @@ export const itemsNavigation = [ 'books', 'audiobooks', 'stationery & gifts', 'b
 // Инструменты пользователя
 export interface Item {
     icon: string;
+    name: string;
     action: 'dropdown' | 'none' | 'redirect';
     route?: string;
 }
 
 export const itemsTools: Item[] = [
-    { icon: '/images/svg/iconProfile.svg', action: 'dropdown' },
-    { icon: '/images/svg/iconSearch.svg', action: 'none' },
-    { icon: '/images/svg/iconShopBag.svg', action: 'redirect', route: '/bag' },
+    { icon: '/images/svg/iconProfile.svg', name: 'profile', action: 'dropdown' },
+    { icon: '/images/svg/iconSearch.svg', name: 'search', action: 'none' },
+    { icon: '/images/svg/iconShopBag.svg', name: 'bag', action: 'redirect', route: '/bag' },
 ];
 
 // Массив фото для слайдера
