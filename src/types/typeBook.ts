@@ -35,3 +35,7 @@ export interface IBookData {
         currencyCode: string;
     } | null,
 }
+
+export interface IBookDataInBag extends IBookData {
+    quantity: number;
+}

@@ -4,7 +4,7 @@ import { RootState } from '@/redux/store';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import styles from './userTools.module.scss';
-import Counter from '../Counter/counter';
+import Indicator from '../Indicator/indicator';
 
 export interface IItem {
     icon: string;
@@ -57,7 +57,7 @@ export default function UserTools({ itemsTools, children }: UserToolsProps) {
             {itemsTools.map((item, index) => (
                 <button key={index} className={styles.btnTool} onClick={() => handleItemClick(item)}>
                     <Image width={15} height={15} src={item.icon} alt={item.icon}/>
-                    {item.name === 'bag' && booksInBag.length ? <Counter currentAccount={booksInBag.length}/> : null}
+                    {item.name === 'bag' && booksInBag.length ? <Indicator currentAccount={booksInBag.length}/> : null}
                 </button>
             ))}
             {

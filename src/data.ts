@@ -50,5 +50,8 @@ export const defMaxResults = 6;
 // Поля формы авторизации
 export const formFileds = [ 'Email', 'Password' ];
 
-// Кнопки меню профиля
-export const profileButtons = [ 'profile', 'sign out' ];
+// Данные меню профиля
+export const itemsProfileMenu = [ 'profile', 'sign out' ];
+
+// Колонки корзины
+export const columnsBag = [ 'item', 'quantity', 'price', 'delivery' ];

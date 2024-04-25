@@ -13,7 +13,7 @@ import DropdownMenu from '../Common/DropdownMenu/dropdownMenu';
 import LoginMenu from '../Common/LoginMenu/loginMenu';
 import { itemsNavigation } from '@/data';
 import { itemsTools } from '@/data';
-import { profileButtons } from '@/data';
+import { itemsProfileMenu } from '@/data';
 
 import { Montserrat } from 'next/font/google';
 import { Open_Sans } from 'next/font/google';
@@ -50,7 +50,7 @@ export default function Layout({ children }: PropsWithChildren) {
                     </Link>
                     <Navigation itemsNavigation={itemsNavigation}/>
                     <UserTools itemsTools={itemsTools}>
-                        {token ? <DropdownMenu itemsMenu={profileButtons}/> : <LoginMenu/>}
+                        {token ? <DropdownMenu itemsMenu={itemsProfileMenu}/> : <LoginMenu/>}
                     </UserTools>
                 </Header>
                 <main className={styles.main}>
