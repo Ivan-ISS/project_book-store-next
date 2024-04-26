@@ -1,5 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { IBookData, IBookDataInBag } from '@/types/typeBook';
+import { IUserData } from '@/types/typeUser';
+import { userDataDefault } from '@/data';
 
 export interface fetchBookParams {
     email: string;
@@ -32,18 +34,23 @@ export const loginUser = createAsyncThunk(
 const authSlice = createSlice({
     name: 'auth',
     initialState: {
-        email: null as string | null,
-        password: null as string | null,
+        userData: userDataDefault as IUserData,
         token: null as string | null,
         error: null as string | null | undefined,
         bag: [] as IBookDataInBag[],
-        aboutUser: null as string | null,
         status: '' as string,
     },
     reducers: {
         setDataUser(state, action: PayloadAction<{ [key: string]: string }>) {
-            state.email = action.payload.email;
-            state.password = action.payload.password;
+            const { email, password, about, name } = action.payload;
+            // state.userData = { ...state.userData, email, password};
+            state.userData = {
+                ...state.userData,
+                ...(name && { name }),
+                ...(email && { email }),
+                ...(password && { password }),
+                ...(about && { about }),
+            };
         },
         addToBag(state, action: PayloadAction<IBookData>) {
             const book = { ...action.payload, quantity: 1 };
@@ -62,6 +69,7 @@ const authSlice = createSlice({
             }
         },
         signOut(state) {
+            state.userData = userDataDefault;
             state.token = null;
             state.bag = [];
         },

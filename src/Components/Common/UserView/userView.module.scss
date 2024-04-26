@@ -1,0 +1,39 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.userView {
+    color: $base-black;
+    font-weight: 700;
+
+    .title {
+        font-size: 24px;
+        text-transform: uppercase;
+    }
+
+    .user {
+        display: flex;
+        column-gap: 17px;
+
+        .userInfo {
+            display: flex;
+            flex-direction: column;
+            row-gap: 25px;
+            min-width: 176px;
+
+            .lineInfo {
+                display: flex;
+                flex-direction: column;
+                row-gap: 8px;
+
+                .signature{
+                    font-size: 12px;
+                    text-transform: uppercase;
+                }
+
+                .meaning {
+                    font-size: 24px;
+                }
+            }
+        }
+    }
+}

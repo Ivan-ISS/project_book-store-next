@@ -53,5 +53,16 @@ export const formFileds = [ 'Email', 'Password' ];
 // Данные меню профиля
 export const itemsProfileMenu = [ 'profile', 'sign out' ];
 
+// Поля представления пользователя
+export const itemsUserView = [ 'name', 'email' ];
+
 // Колонки корзины
 export const columnsBag = [ 'item', 'quantity', 'price', 'delivery' ];
+
+// Данные профиля по умолчанию
+export const userDataDefault = {
+    name: 'Empty',
+    email: null,
+    password: null,
+    about: 'Write about yourself'
+};
