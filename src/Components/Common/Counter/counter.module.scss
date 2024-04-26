@@ -4,7 +4,7 @@
 .counter {
     display: flex;
     max-width: max-content;
-    max-height: 45px;
+    //max-height: 45px;
     width: 100%;
     border: 1px solid rgba($base-gray, 0.2);
 
@@ -15,6 +15,9 @@
         box-sizing: content-box;
         font-size: 24px;
         background: transparent;
+
+        display: flex;
+        align-items: center;
 
         &:hover {
             box-shadow: 0 0 5px rgba($base-black, 0.4);
@@ -28,5 +31,34 @@
 
     .quantity {
         padding: 12px 31px;
+    }
+}
+
+@media (max-width: 1170px) {
+
+    .counter {
+    
+        .btnChange{
+            padding: 5px 8px;
+        }
+    
+        .quantity {
+            padding: 6px 15.5px;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .counter {
+        flex-direction: column;
+
+        .btnChange{
+            padding: 5px 5px;
+        }
+    
+        .quantity {
+            padding: 6px 11.5px;
+        }
     }
 }

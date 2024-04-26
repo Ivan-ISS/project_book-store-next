@@ -7,6 +7,7 @@ import BookCardInBag from '../BookCardInBag/bookCardInBag';
 import { IBookDataInBag } from '@/types/typeBook';
 import Counter from '../Common/Counter/counter';
 import { columnsBag } from '@/data';
+import formatToPrice from '@/utils/formatToPrice';
 
 export interface ShoppingBagProps{
     booksInBag: IBookDataInBag[];
@@ -35,8 +36,14 @@ export default function ShoppingBag({ booksInBag, ...props }: ShoppingBagProps) 
                             indicatorOfChange={booksInBag.length}
                             handleClickCounter={(id, quantity) => handleClickCounter(id, quantity)}
                         />
-                        <p>{`${bookInBag.retailPrice?.amount} ${bookInBag.retailPrice?.currencyCode}`}</p>
-                        <p>Shipping: delivery</p>
+                        <p className={styles.price}>
+                            {
+                                `${bookInBag.retailPrice
+                                ? formatToPrice((bookInBag.retailPrice.amount * bookInBag.quantity).toFixed(2)) + ' ' + bookInBag.retailPrice.currencyCode
+                                : '---'}`
+                            }
+                        </p>
+                        <p className={styles.delivery}>Shipping: delivery</p>
                     </Fragment>
                 ))}
             </div>

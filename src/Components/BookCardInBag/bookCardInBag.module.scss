@@ -72,25 +72,15 @@
 
 @media (max-width: 1170px) {
 
-    .setBooks {
+    .bookCard {
 
-        .bookCard {
+        .info {
+            padding: 15px 0;
+        
+            .data {
 
-            .cover {
-
-                .coverImg {
-                    min-width: 180px;
-                }
-            }
-
-            .info {
-                padding: 15px 0;
-            
-                .data {
-
-                    .title {
-                        font-size: 14px;
-                    }
+                .title {
+                    font-size: 14px;
                 }
             }
         }
@@ -99,48 +89,31 @@
 
 @media (max-width: 1024px) {
 
-    .setBooks {
-        column-gap: 30px;
-        row-gap: 76px;
+    .bookCard {
 
-        .bookCard {
-            column-gap: 10px;
-
-            .cover {
-
-                .coverImg {
-                    min-width: 130px;
-                }
-            }
-
-            .info {
-                padding: 5px 0;
-                row-gap: 10px;
-            }
+        .info {
+            padding: 5px 0;
+            row-gap: 10px;
         }
     }
 }
 
 @media (max-width: 767px) {
 
-    .setBooks {
-        margin-left: 0;
-        padding-top: 46px;
-        grid-template-columns: 1fr;
-        grid-template-rows: repeat(6, 1fr);
-        grid-auto-rows: 1fr;
-        row-gap: 56px;
+    .bookCard {
+        column-gap: 10px;
 
-        .bookCard {
-
-            .cover {
-                width: 140px;
+        .cover {
+    
+            .coverImg {
+                width: 82px;
+                height: 116px;
             }
-
-            .info {
-                padding: 1% 0;
-                row-gap: 10px;
-            }
+        }
+        
+        .info {
+            padding: 1% 0;
+            row-gap: 10px;
         }
     }
 }

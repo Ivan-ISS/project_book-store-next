@@ -49,7 +49,8 @@ export default function BookCard({ bookData, ...props }: BookCardProps) {
                 <p className={styles.description}>{bookData.description ? bookData.description : 'No description'}</p>
                 <span className={styles.price}>{bookData.retailPrice ? bookData.retailPrice.amount + ' ' + bookData.retailPrice.currencyCode : null}</span>
                 <Button
-                    text={checkingBooksInShopBag(bookData, booksInBag) ? 'In the cart' : 'Buy now'} fontSize={'small'}
+                    text={checkingBooksInShopBag(bookData, booksInBag) ? 'In the cart' : 'Buy now'}
+                    fontSize={'small'}
                     color={'transparent'}
                     onClick={() => handleClick(bookData)}
                     isDisabled={checkingBooksInShopBag(bookData, booksInBag)}

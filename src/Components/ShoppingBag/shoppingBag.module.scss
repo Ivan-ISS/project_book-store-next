@@ -17,12 +17,55 @@
     grid-auto-rows: auto;
     // column-gap: 76px;
     row-gap: 78px;
+    column-gap: 30px;
     font-weight: 700;
+    align-items: center;
 
 
     .nameColumn {
         font-size: 10px;
         text-transform: uppercase;
         color: $base-gray;
+    }
+
+    .price {
+        font-size: 18px;
+        text-transform: uppercase;
+        color: $base-black;
+    }
+
+    .delivery {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 1170px) {
+    .setGoods {
+        
+    }
+}
+
+@media (max-width: 1024px) {
+
+}
+
+@media (max-width: 767px) {
+
+    .setGoods {
+        grid-template-columns: repeat(3, auto);
+        row-gap: 50px;
+        column-gap: 10px;
+        
+        .nameColumn {
+            display: none;
+        }
+
+        .price {
+            font-size: 12px;
+        }
+
+        .delivery {
+            display: none;
+        }
     }
 }
