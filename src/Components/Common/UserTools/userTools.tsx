@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, ReactNode } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { useRouter } from 'next/router';
@@ -15,10 +15,13 @@ export interface IItem {
 
 export interface UserToolsProps {
     itemsTools: IItem[];
+    token?: string | null;
     children?: JSX.Element;
+    Modal?: ReactNode;
+    handleClickBag?: () => void;
 }
 
-export default function UserTools({ itemsTools, children }: UserToolsProps) {
+export default function UserTools({ itemsTools, Modal, token, handleClickBag, children }: UserToolsProps) {
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
     const booksInBag = useSelector((state: RootState) => state.auth.bag);
     const userTools = useRef<HTMLDivElement>(null);
@@ -36,8 +39,7 @@ export default function UserTools({ itemsTools, children }: UserToolsProps) {
         return () => {
             document.removeEventListener('click', handleClickOutside);
         };
-      }, []);
-
+    }, []);
 
     const handleItemClick = (item: IItem) => {   // В зависимости от предназначения иконки назначаем ей обработчик
         switch (item.action) {
@@ -45,7 +47,12 @@ export default function UserTools({ itemsTools, children }: UserToolsProps) {
                 setMenuOpen(v => !v);
                 break;
             case 'redirect':
-                push(item.route as string);
+                if (handleClickBag) {
+                    handleClickBag();
+                }
+                if (token !== null) {
+                    push(item.route as string);
+                }
                 break;
             default:
                 break;
@@ -65,6 +72,7 @@ export default function UserTools({ itemsTools, children }: UserToolsProps) {
                 ? children
                 : null
             }
+            { Modal && Modal }
         </div>
     );
 }

@@ -1,6 +1,7 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import styles from './layout.module.scss';
 import Head from 'next/head';
@@ -10,7 +11,10 @@ import Navigation from '../Common/Navigation/navigation';
 import UserTools from '../Common/UserTools/userTools';
 import BurgerButton from '../Common/BurgerButton/burgerButton';
 import DropdownMenu from '../Common/DropdownMenu/dropdownMenu';
+import Modal from '../Common/Modal/modal';
 import LoginMenu from '../Common/LoginMenu/loginMenu';
+import ContentAuthModal from '../AuthModal/contentAuthModal';
+import usePortal from '@/hooks/usePortal';
 import { itemsNavigation } from '@/data';
 import { itemsTools } from '@/data';
 import { itemsProfileMenu } from '@/data';
@@ -29,7 +33,17 @@ const openSansFont = Open_Sans({
 });
 
 export default function Layout({ children }: PropsWithChildren) {
+    const { isOpen: isOpenPortal, openPortal, closePortal, Portal } = usePortal();
     const token = useSelector((state: RootState) => state.auth.token);
+    const { push } = useRouter();
+    const prevToken = useRef(token);
+
+    useEffect(() => {  // Перенаправдение на страницу профиля при авторизации
+        if (token !== prevToken.current && token !== null) {
+            push('/profile');
+        }
+        prevToken.current = token;
+    }, [token, push]);
 
     return (
         <>
@@ -49,8 +63,13 @@ export default function Layout({ children }: PropsWithChildren) {
                         <div>Bookshop</div>
                     </Link>
                     <Navigation itemsNavigation={itemsNavigation}/>
-                    <UserTools itemsTools={itemsTools}>
-                        {token ? <DropdownMenu itemsMenu={itemsProfileMenu}/> : <LoginMenu/>}
+                    <UserTools
+                        itemsTools={itemsTools}
+                        token={token}
+                        handleClickBag={openPortal}
+                        Modal={ !token && isOpenPortal && <Portal><Modal closeModal={closePortal} content={<ContentAuthModal/>}/></Portal> }
+                    >
+                        {token ? <DropdownMenu itemsMenu={itemsProfileMenu}/> : <LoginMenu position='absolute'/>}
                     </UserTools>
                 </Header>
                 <main className={styles.main}>

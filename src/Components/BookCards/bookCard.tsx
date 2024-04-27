@@ -10,15 +10,20 @@ import Button from '../Common/Button/button';
 
 export interface BookCardProps extends ButtonHTMLAttributes<HTMLDivElement>{
     bookData: IBookData;
+    token?: string | null;
+    handleClickBtn?: () => void;
 }
 
-export default function BookCard({ bookData, ...props }: BookCardProps) {
+export default function BookCard({ bookData, token, handleClickBtn, ...props }: BookCardProps) {
     const dispatch = useDispatch<RootDispatch>();
     const booksInBag = useSelector((state: RootState) => state.auth.bag);
 
     const handleClick = (bookData: IBookData) => {
-        if (!checkingBooksInShopBag(bookData, booksInBag)) {
+        if (token !== null && !checkingBooksInShopBag(bookData, booksInBag)) {
             dispatch(addToBag(bookData));
+        }
+        if (!token && handleClickBtn) {
+            handleClickBtn();
         }
     };
 

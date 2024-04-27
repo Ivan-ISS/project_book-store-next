@@ -1,0 +1,23 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.btnClose {
+    display: flex;
+    justify-content: center;
+    justify-self: start;
+    background: transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    padding: 8px;
+    transition: 0.3s ease-in-out;
+
+    position: absolute;
+    top: 7px;
+    right: 7px;
+
+    &:hover {
+        transform: rotate(90deg);
+        box-shadow: 2px -2px 4px #0000004d;
+        background: #ffe0e2;
+    }
+}

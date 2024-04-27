@@ -35,11 +35,16 @@
     color: $base-button;
 
     &:hover {
-        background: rgba($base-button, 0.05)
+        background: rgba($base-button, 0.05);
+        box-shadow: 1px 2px 5px rgba($base-black, 0.4);
     }
 }
 
 .purple {
     background: $base-purple;
     color: $base-white;
+
+    &:hover {
+        box-shadow: 1px 2px 5px rgba($base-black, 0.4);
+    }
 }

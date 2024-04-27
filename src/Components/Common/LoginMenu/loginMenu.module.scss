@@ -2,11 +2,6 @@
 @import "/src/styles/_variables";
 
 .loginMenu {
-    position: absolute;
-    top: 40px;
-    left: -100px;
-    z-index: 1;
-
     padding: 17px 23px 36px;
     background: $base-white;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
@@ -36,6 +31,13 @@
             }
         }
     }
+}
+
+.absolute {
+    position: absolute;
+    top: 40px;
+    left: -100px;
+    z-index: 1;
 }
 
 @media (max-width: 767px) {

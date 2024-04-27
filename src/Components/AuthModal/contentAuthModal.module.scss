@@ -1,0 +1,37 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.contentAuth {
+    
+    .text {
+        text-align: center;
+
+        .attention {
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $base-red;
+            cursor: pointer;
+            animation: run 1.25s infinite ease-in-out;
+
+            &:hover {
+                text-shadow: 
+                    0.2px 0.2px 1px $base-gray,
+                    -0.2px -0.2px 1px $base-gray,
+                    0.2px -0.2px 1px $base-gray,
+                    -0.2px 0.2px 1px $base-gray;
+            }
+        }
+        
+        @keyframes run {
+            0% {
+                color: $base-red;
+            }
+            50% {
+                color: rgba($base-red, 0.5);
+            }
+            100% {
+                color: $base-red; 
+            }
+        }
+    }
+}

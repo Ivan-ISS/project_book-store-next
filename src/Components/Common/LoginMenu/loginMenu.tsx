@@ -7,7 +7,11 @@ import Button from '../Button/button';
 import styles from './loginMenu.module.scss';
 import { formFileds } from '@/data';
 
-export default function LoginMenu() {
+export interface LoginMenuProps {
+    position: 'relative' | 'absolute';
+}
+
+export default function LoginMenu({ position, ...props }: LoginMenuProps) {
     const dispatch = useDispatch<RootDispatch>();
     const error = useSelector((state: RootState) => state.auth.error);
     const [formData, setFormData] = useState({ email: '', password: '' });
@@ -27,7 +31,7 @@ export default function LoginMenu() {
     };
 
     return (
-        <div className={styles.loginMenu}>
+        <div {...props} className={`${styles.loginMenu} ${styles[position]}`}>
             <form onSubmit={handleSubmit} className={styles.form}>
                 <legend className={styles.legend}>Log in</legend>
                 <div className={styles.fileds}>
