@@ -66,3 +66,6 @@ export const userDataDefault = {
     password: null,
     about: 'Write about yourself'
 };
+
+// Данные редактирования профиля
+export const formProfile = [ 'Name', 'Email', 'Password', 'About' ];

@@ -8,8 +8,8 @@ export default function ContentAuthModal() {
     return (
         <div className={styles.contentAuth}>
             <p className={styles.text}>
-                Для работы с корзиной и совершения покупок<br/>
-                <span className={styles.attention} onClick={() => setMenuOpen((v) => !v)}>&gt;&gt;&gt; авторизуйтесь &lt;&lt;&lt;</span>
+                To work with the cart and make purchases,<br/>
+                <span className={styles.attention} onClick={() => setMenuOpen((v) => !v)}>&gt;&gt;&gt; authorize &lt;&lt;&lt;</span>
             </p>
             {menuOpen && <LoginMenu position='relative'/>}
         </div>

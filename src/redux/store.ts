@@ -6,6 +6,7 @@ import { persistStore } from 'redux-persist';
 import { FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import booksSlice from './slices/booksSlice';
 import authSlice from './slices/authSlice';
+import orderSlice from './slices/orderSlice';
 
 
 const persistConfig = {
@@ -19,6 +20,7 @@ export const store = configureStore({
     reducer: {
         books: booksSlice,
         auth: persistedReducer,
+        order: orderSlice,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware({
         serializableCheck: {

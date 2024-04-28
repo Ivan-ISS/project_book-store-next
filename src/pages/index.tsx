@@ -11,6 +11,7 @@ import PromoCard from '../Components/Common/PromoCard/promoCard';
 import Categories from '../Components/Categories/categories';
 import Button from '../Components/Common/Button/button';
 import BookCardGroup from '@/Components/BookCards/bookCardGroup';
+import Loader from '../Components/Common/Loader/loader';
 import { slides, categories, defaultCategory, defStartIndex, defMaxResults } from '@/data';
 import prepareData from '@/utils/prepareData';
 
@@ -36,6 +37,7 @@ export default function Home({ receivedData }: HomeProps) {
     const dispatch = useDispatch<RootDispatch>();
     const startIndex = useSelector((state: RootState) => state.books.startIndex);
     const booksData = useSelector((state: RootState) => state.books.booksData);
+    const loading = useSelector((state: RootState) => state.books.status);
     const currentCategory = useSelector((state: RootState) => state.books.currentCategory);
 
     const handleLoadMore = () => {
@@ -63,6 +65,11 @@ export default function Home({ receivedData }: HomeProps) {
                 <Categories categories={categories}/>
                 <div className={styles.goods}>
                     <BookCardGroup booksData={booksData}/>
+                    {
+                        loading === 'in progress'
+                        ? <Loader />
+                        : null
+                    }
                     <Button onClick={() => handleLoadMore()} isDisabled={false} text={'Load more'} fontSize={'small'} color={'transparent'}/>
                 </div>
             </section>

@@ -17,6 +17,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     max-width: 350px;
+    min-width: 150px;
     min-height: 150px;
     background: $base-white;
     padding: 25px;

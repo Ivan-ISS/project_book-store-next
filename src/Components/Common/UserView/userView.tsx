@@ -7,9 +7,10 @@ import { IUserData } from '@/types/typeUser';
 export interface UserViewProps {
     itemsUserView: string[];
     userData: IUserData;
+    handleClickBtn?: () => void;
 }
 
-export default function UserView({ itemsUserView, userData }: UserViewProps) {
+export default function UserView({ itemsUserView, handleClickBtn, userData }: UserViewProps) {
 
     return (
         <div className={styles.userView}>
@@ -25,7 +26,7 @@ export default function UserView({ itemsUserView, userData }: UserViewProps) {
                             <p className={styles.meaning}>{userData[item]}</p>
                         </div>
                     ))}
-                    <Button style={{marginTop: '16px'}} text={'Edit profile'} fontSize={'small'} color={'transparent'}/>
+                    <Button style={{marginTop: '16px'}} text={'Edit profile'} fontSize={'small'} color={'transparent'} onClick={handleClickBtn}/>
                 </div>
             </div>
         </div>

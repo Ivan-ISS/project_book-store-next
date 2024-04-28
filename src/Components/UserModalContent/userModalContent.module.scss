@@ -1,0 +1,42 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.contentUser {
+    padding: 17px 23px 36px;
+    background: $base-white;
+    min-width: 241px;
+
+    .form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        row-gap: 14px;
+
+        .legend {
+            font-size: $font-size-logIn-title;
+            color: $base-black;
+            font-weight: 700;
+        }
+
+        .fileds {
+            display: flex;
+            flex-direction: column;
+
+            .message {
+                font-size: 8px;
+                font-weight: 700;
+                color: $base-red;
+                text-align: center;
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+
+    .loginMenu {
+        padding: 15px;
+        min-width: 150px;
+        left: -75px;
+    }
+}

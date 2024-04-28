@@ -1,0 +1,55 @@
+@import "/src/styles/_colors";
+@import "/src/styles/_variables";
+
+.loader {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.item {
+    display: block;
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    box-shadow: 2px 2px 3px rgba(0,0,0,.4);
+    animation: run 0.5s infinite linear;
+}
+
+.one {
+    background: #4e148c;
+    opacity: 0.6;
+    animation-delay: 0.375s;
+}
+
+.two {
+    background: #858ae3;
+    animation-delay: 0.25s;
+}
+
+.three {
+    background: #4e148c;
+    opacity: 0.6;
+    animation-delay: 0.125s;
+}
+
+.four {
+    background: #858ae3;
+}
+
+@keyframes run {
+    0% {
+        transform: translate(0%);
+    }
+    25% {
+        transform: translate(200%); 
+    }
+    50% {
+        transform: translate(200%, 200%);
+    }
+    75% {
+        transform: translate(0%, 200%); 
+    }
+}

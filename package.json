@@ -16,6 +16,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.3",
     "@types/redux-persist": "^4.3.1",
+    "localstorage-polyfill": "^1.0.1",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",

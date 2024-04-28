@@ -2,15 +2,17 @@ import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { IBookData, IBookDataInBag } from '@/types/typeBook';
 import { IUserData } from '@/types/typeUser';
 import { userDataDefault } from '@/data';
+import { saveUserData } from '@/utils/saveUserData';
+import { loadUserState } from '@/utils/loadUserState';
 
-export interface fetchBookParams {
+export interface fetchAuthParams {
     email: string;
     password: string;
 }
 
 export const loginUser = createAsyncThunk(
     'auth/loginUser',
-    async ({ email, password }: fetchBookParams) => {
+    async ({ email, password }: fetchAuthParams) => {
         const response = await fetch('api/auth?', {
             method: 'POST',
             headers: {
@@ -69,6 +71,8 @@ const authSlice = createSlice({
             }
         },
         signOut(state) {
+            saveUserData(state.userData, state.bag);
+            localStorage.setItem('users', JSON.stringify(state.userData));
             state.userData = userDataDefault;
             state.token = null;
             state.bag = [];
@@ -85,6 +89,14 @@ const authSlice = createSlice({
                 state.token = action.payload;
                 console.log('payload ', action.payload);
                 console.log('status ', state.status);
+                if (state.userData.email) {
+                    const user = loadUserState(state.userData.email);
+                    if (user) {
+                        state.userData = user.userData;
+                        state.bag = user.bag;
+                    }
+                }
+                
             })
             .addCase(loginUser.rejected, (state, action ) => {
                 state.status = 'download failed';
