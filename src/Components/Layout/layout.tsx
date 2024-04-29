@@ -1,23 +1,23 @@
+import styles from './layout.module.scss';
+import { itemsTools } from '@/data';
+import { itemsNavigation } from '@/data';
+import { itemsProfileMenu } from '@/data';
 import { PropsWithChildren, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
-import styles from './layout.module.scss';
 import Head from 'next/head';
+import Link from 'next/link';
+import Modal from '../Common/Modal/modal';
 import Header from '../Header/header';
 import Footer from '../Footer/footer';
 import Navigation from '../Common/Navigation/navigation';
 import UserTools from '../Common/UserTools/userTools';
 import BurgerButton from '../Common/BurgerButton/burgerButton';
 import DropdownMenu from '../Common/DropdownMenu/dropdownMenu';
-import Modal from '../Common/Modal/modal';
 import LoginMenu from '../Common/LoginMenu/loginMenu';
-import ContentAuthModal from '../AuthModal/contentAuthModal';
+import AuthModalContent from '../Common/Modal/AuthModalContent/authModalContent';
 import usePortal from '@/hooks/usePortal';
-import { itemsNavigation } from '@/data';
-import { itemsTools } from '@/data';
-import { itemsProfileMenu } from '@/data';
 
 import { Montserrat } from 'next/font/google';
 import { Open_Sans } from 'next/font/google';
@@ -35,10 +35,14 @@ const openSansFont = Open_Sans({
 export default function Layout({ children }: PropsWithChildren) {
     const { isOpen: isOpenPortal, openPortal, closePortal, Portal } = usePortal();
     const token = useSelector((state: RootState) => state.auth.token);
-    const { push } = useRouter();
     const prevToken = useRef(token);
+    const { push } = useRouter();
 
-    useEffect(() => {  // Перенаправдение на страницу профиля при авторизации
+    const handleRoutClick = (item: string) => { // Возможность переходить в корзину после авторизации
+        if (token !== null) push(item);
+    };
+
+    useEffect(() => {  // Перенаправдение на страницу профиля после авторизации
         if (token !== prevToken.current && token !== null) {
             push('/profile');
         }
@@ -57,7 +61,7 @@ export default function Layout({ children }: PropsWithChildren) {
             <div className={`${styles.layout} ${montserratFont.className}`}>
                 <Header>
                     <BurgerButton>
-                        <DropdownMenu itemsMenu={itemsNavigation}/>
+                        <DropdownMenu itemsMenu={itemsNavigation} insert={'burgerMenu'}/>
                     </BurgerButton>
                     <Link href ="/" className={styles.logo}>
                         <div>Bookshop</div>
@@ -65,12 +69,12 @@ export default function Layout({ children }: PropsWithChildren) {
                     <Navigation itemsNavigation={itemsNavigation}/>
                     <UserTools
                         itemsTools={itemsTools}
-                        token={token}
-                        handleClickBag={openPortal}
-                        Modal={ !token && isOpenPortal && <Portal><Modal closeModal={closePortal} content={<ContentAuthModal/>}/></Portal> }
+                        handleItemClick={openPortal}
+                        handleRoutClick={handleRoutClick}
                     >
-                        {token ? <DropdownMenu itemsMenu={itemsProfileMenu}/> : <LoginMenu position='absolute'/>}
+                        { token ? <DropdownMenu itemsMenu={itemsProfileMenu} insert={'profileMenu'}/> : <LoginMenu position='absolute'/> }
                     </UserTools>
+                    { !token && isOpenPortal && <Portal><Modal closeModal={closePortal} insert={<AuthModalContent/>}/></Portal> }
                 </Header>
                 <main className={styles.main}>
                     <div className={styles.container}>{children}</div>

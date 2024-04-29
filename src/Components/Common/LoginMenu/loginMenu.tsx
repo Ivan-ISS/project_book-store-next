@@ -1,20 +1,20 @@
+import styles from './loginMenu.module.scss';
+import { formFileds } from '@/data';
 import { FormEvent, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser, setDataUser } from '@/redux/slices/authSlice';
 import { RootState, RootDispatch } from '@/redux/store';
 import Input from '../Input/input';
 import Button from '../Button/button';
-import styles from './loginMenu.module.scss';
-import { formFileds } from '@/data';
 
 export interface LoginMenuProps {
     position: 'relative' | 'absolute';
 }
 
 export default function LoginMenu({ position, ...props }: LoginMenuProps) {
+    const [ formData, setFormData ] = useState({ email: '', password: '' });
     const dispatch = useDispatch<RootDispatch>();
     const error = useSelector((state: RootState) => state.auth.error);
-    const [formData, setFormData] = useState({ email: '', password: '' });
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -43,7 +43,7 @@ export default function LoginMenu({ position, ...props }: LoginMenuProps) {
                             onChange={(e) => handleChange(field, e)}
                         />
                     ))}
-                    {error && <p className={styles.message}>{error}</p>}
+                    { error && <p className={styles.message}>{error}</p> }
                 </div>
                 <Button
                     type="submit"

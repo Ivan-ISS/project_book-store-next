@@ -1,5 +1,5 @@
-import { PropsWithChildren } from 'react';
 import styles from './header.module.scss';
+import { PropsWithChildren } from 'react';
 
 export default function Header({ children }: PropsWithChildren) {
 

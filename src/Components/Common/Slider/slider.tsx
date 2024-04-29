@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import styles from './slider.module.scss';
+import Image from 'next/image';
 import useDotSlider from '@/hooks/useDotSlider';
 
 export interface SliderProps {
@@ -11,9 +11,7 @@ export interface SliderProps {
 }
 
 export default function Slider({ slides }: SliderProps) {
-    const [indexSlide, handleClickDot] = useDotSlider(slides.images);
-
-    // console.log('count ', indexSlide);
+    const [ indexSlide, handleClickDot ] = useDotSlider(slides.images);
 
     return (
         <div className={styles.slider}>

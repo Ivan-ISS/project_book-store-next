@@ -1,6 +1,6 @@
+import styles from './counter.module.scss';
 import { ButtonHTMLAttributes, useState, useEffect } from 'react';
 import Image from 'next/image';
-import styles from './counter.module.scss';
 import iconPlus from '@/images/svg/plus.svg';
 import iconMinus from '@/images/svg/minus.svg';
 

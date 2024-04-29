@@ -27,8 +27,6 @@ export const loginUser = createAsyncThunk(
         }
 
         const data = await response.json();
-        console.log(data);
-        // dispatch(fetchBooks(data.token));
         return data.token;
     }
 );
@@ -87,8 +85,6 @@ const authSlice = createSlice({
                 state.status = 'successfully';
                 state.error = null;
                 state.token = action.payload;
-                console.log('payload ', action.payload);
-                console.log('status ', state.status);
                 if (state.userData.email) {
                     const user = loadUserState(state.userData.email);
                     if (user) {
@@ -96,13 +92,10 @@ const authSlice = createSlice({
                         state.bag = user.bag;
                     }
                 }
-                
             })
             .addCase(loginUser.rejected, (state, action ) => {
                 state.status = 'download failed';
                 state.error = action.error.message;
-                console.log('error ', state.error);
-                console.log('status ', state.status);
             });
     }
 });

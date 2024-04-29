@@ -4,7 +4,7 @@ import { setDataUser } from '@/redux/slices/authSlice';
 import styles from '../styles/pageStyles/profile.module.scss';
 import Layout from '../Components/Layout/layout';
 import UserView from '../Components/Common/UserView/userView';
-import UserModalContent from '../Components/UserModalContent/userModalContent';
+import UserModalContent from '../Components/Common/Modal/UserModalContent/userModalContent';
 import Modal from '@/Components/Common/Modal/modal';
 import usePortal from '@/hooks/usePortal';
 import EditableArea from '../Components/Common/EditableArea/editableArea';
@@ -19,20 +19,20 @@ export default function Profile() {
         dispatch(setDataUser({about: event.target.value}));
     };
 
-    const handleClickBtn = () => {
+    const handleClickEdit = () => {
         openPortal();
     };
 
     return (
         <Layout>
             <section className={styles.blockUser}>
-                <UserView itemsUserView={itemsUserView} userData={userData} handleClickBtn={handleClickBtn}/>
+                <UserView itemsUserView={itemsUserView} userData={userData} handleClickBtn={handleClickEdit}/>
                 <EditableArea
                     title={'About me'}
                     description={userData.about ? userData.about : ''}
-                    handleChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => handleChange(event)}
+                    onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => handleChange(event)}
                 />
-                { isOpenPortal && <Portal><Modal closeModal={closePortal} content={<UserModalContent closeModal={closePortal}/>}/></Portal> }
+                { isOpenPortal && <Portal><Modal closeModal={closePortal} insert={<UserModalContent closeModal={closePortal}/>}/></Portal> }
             </section>
         </Layout>
     );

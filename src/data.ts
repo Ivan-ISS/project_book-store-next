@@ -2,14 +2,14 @@
 export const itemsNavigation = [ 'books', 'audiobooks', 'stationery & gifts', 'blog' ];
 
 // Инструменты пользователя
-export interface Item {
+export interface IItem {
     icon: string;
     name: string;
     action: 'dropdown' | 'none' | 'redirect';
     route?: string;
 }
 
-export const itemsTools: Item[] = [
+export const itemsTools: IItem[] = [
     { icon: '/images/svg/iconProfile.svg', name: 'profile', action: 'dropdown' },
     { icon: '/images/svg/iconSearch.svg', name: 'search', action: 'none' },
     { icon: '/images/svg/iconShopBag.svg', name: 'bag', action: 'redirect', route: '/bag' },

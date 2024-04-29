@@ -1,6 +1,6 @@
+import styles from './buttonClose.module.scss';
 import Image from 'next/image';
 import iconClose from '@/images/svg/close.svg';
-import styles from './buttonClose.module.scss';
 
 export default function ButtonClose({ ...props }) {
 

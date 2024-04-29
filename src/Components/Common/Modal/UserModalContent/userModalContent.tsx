@@ -1,13 +1,17 @@
+import styles from './userModalContent.module.scss';
+import { formProfile } from '@/data';
 import { FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { RootDispatch } from '@/redux/store';
 import { setDataUser } from '@/redux/slices/authSlice';
-import styles from './userModalContent.module.scss';
-import Input from '../Common/Input/input';
-import Button from '../Common/Button/button';
-import { formProfile } from '@/data';
+import Input from '../../Input/input';
+import Button from '../../Button/button';
 
-export default function UserModalContent({ closeModal }: { closeModal: () => void }) {
+export interface UserModalContentProps {
+    closeModal: () => void;
+}
+
+export default function UserModalContent({ closeModal }: UserModalContentProps) {
     const [formData, setFormData] = useState<{ [key: string]: string }>({});
     const dispatch = useDispatch<RootDispatch>();
 
@@ -23,7 +27,6 @@ export default function UserModalContent({ closeModal }: { closeModal: () => voi
             ...prevData,
             [field]: event.target.value
         }));
-        console.log(formData);
     };
 
     return (
@@ -35,7 +38,6 @@ export default function UserModalContent({ closeModal }: { closeModal: () => voi
                         <Input
                             key={index}
                             type={field}
-                            isValid={'valid'}
                             onChange={(e) => handleChange(field, e)}
                         />
                     ))}

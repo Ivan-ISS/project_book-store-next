@@ -37,3 +37,39 @@
         }
     }
 }
+
+@media (max-width: 500px) {
+
+    .userView {
+    
+        .title {
+            font-size: 18px;
+        }
+    
+        .user {
+            column-gap: 10px;
+
+            .avaterImage {
+                width: 185px;
+                height: 185px;
+            }
+    
+            .userInfo {
+                min-width: 125px;
+                row-gap: 15px;
+    
+                .lineInfo {
+                    row-gap: 3px;
+    
+                    .signature{
+                        font-size: 10px;
+                    }
+    
+                    .meaning {
+                        font-size: 18px;
+                    }
+                }
+            }
+        }
+    }
+}

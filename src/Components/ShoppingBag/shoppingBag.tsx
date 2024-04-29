@@ -1,27 +1,27 @@
+import styles from './shoppingBag.module.scss';
+import { columnsBag } from '@/data';
+import { IBookDataInBag } from '@/types/typeBook';
 import { Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import { RootDispatch } from '@/redux/store';
 import { setQuantity } from '@/redux/slices/authSlice';
-import styles from './shoppingBag.module.scss';
-import BookCardInBag from '../BookCardInBag/bookCardInBag';
-import { IBookDataInBag } from '@/types/typeBook';
 import Counter from '../Common/Counter/counter';
-import { columnsBag } from '@/data';
+import BookCardInBag from '../BookCardInBag/bookCardInBag';
 import formatToPrice from '@/utils/formatToPrice';
 
-export interface ShoppingBagProps{
+export interface ShoppingBagProps {
     booksInBag: IBookDataInBag[];
 }
 
-export default function ShoppingBag({ booksInBag, ...props }: ShoppingBagProps) {
+export default function ShoppingBag({ booksInBag }: ShoppingBagProps) {
     const dispatch = useDispatch<RootDispatch>();
 
     const handleClickCounter = (id: string, quantity: number) => {
-        dispatch(setQuantity({ id, quantity }));
+        dispatch(setQuantity({id, quantity}));
     };
 
     return (
-        <div {...props} className={styles.shoppingBag}>
+        <div className={styles.shoppingBag}>
             <h2 className={styles.title}>Shopping cart</h2>
             <div className={styles.setGoods}>
                 {columnsBag.map((item, index) => (

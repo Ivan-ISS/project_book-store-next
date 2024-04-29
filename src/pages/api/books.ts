@@ -1,7 +1,7 @@
+import { defMaxResults } from '@/data';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { IDataResponse } from '@/types/typeBook';
 import prepareData from '@/utils/prepareData';
-import { defMaxResults } from '@/data';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 

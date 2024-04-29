@@ -1,8 +1,7 @@
-import Image from 'next/image';
 import styles from './userView.module.scss';
-import Button from '../Button/button';
-import avatar from '@/images/png/avatarPlaceholder.png';
 import { IUserData } from '@/types/typeUser';
+import Image from 'next/image';
+import Button from '../Button/button';
 
 export interface UserViewProps {
     itemsUserView: string[];
@@ -17,7 +16,7 @@ export default function UserView({ itemsUserView, handleClickBtn, userData }: Us
             <h2 className={styles.title}>Profile</h2>
             <div className={styles.user}>
                 <div className={styles.userAvatar}>
-                    <Image src={avatar} width={235} height={235} alt="avatar"/>
+                    <Image className={styles.avaterImage} src={'/images/png/avatarPlaceholder.png'} width={235} height={235} alt="avatar"/>
                 </div>
                 <div className={styles.userInfo}>
                     {itemsUserView.map((item, index) => (
@@ -26,7 +25,13 @@ export default function UserView({ itemsUserView, handleClickBtn, userData }: Us
                             <p className={styles.meaning}>{userData[item]}</p>
                         </div>
                     ))}
-                    <Button style={{marginTop: '16px'}} text={'Edit profile'} fontSize={'small'} color={'transparent'} onClick={handleClickBtn}/>
+                    <Button
+                        style={{marginTop: '16px'}}
+                        text={'Edit profile'}
+                        fontSize={'small'}
+                        color={'transparent'}
+                        onClick={handleClickBtn}
+                    />
                 </div>
             </div>
         </div>

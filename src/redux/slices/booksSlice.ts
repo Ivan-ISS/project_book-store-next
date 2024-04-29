@@ -12,7 +12,6 @@ export const fetchBooks = createAsyncThunk(
     async ({ subject, startIndex }: fetchBookParams) => {
         const response = await fetch(`api/books?subject=${subject}&startIndex=${startIndex}`);
         const data = await response.json();
-        // console.log(data.booksData[0]);
         return data.booksData;
     }
 );
@@ -43,10 +42,9 @@ const booksSlice = createSlice({
             })
             .addCase(fetchBooks.fulfilled, (state, action: PayloadAction<IBookData[]>) => {
                 state.status = 'successfully';
-                console.log('Payload ', action.payload);
                 state.booksData = [...state.booksData, ...action.payload];
             })
-            .addCase(fetchBooks.rejected, (state, action ) => {
+            .addCase(fetchBooks.rejected, (state, action) => {
                 state.status = 'download failed';
             });
     }

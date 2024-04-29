@@ -1,13 +1,14 @@
 import styles from './indicator.module.scss';
+import { HTMLAttributes } from 'react';
 
-export interface IndicatorProps {
+export interface IndicatorProps extends HTMLAttributes<HTMLDivElement> {
     currentAccount: number;
 }
 
-export default function Indicator({ currentAccount }: IndicatorProps) {
+export default function Indicator({ currentAccount, ...props }: IndicatorProps) {
 
     return (
-        <div className={styles.indicator}>
+        <div {...props} className={styles.indicator}>
             {currentAccount}
         </div>
     );

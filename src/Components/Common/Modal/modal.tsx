@@ -1,6 +1,5 @@
-import { ReactNode } from 'react';
 import styles from './modal.module.scss';
-import ContentAuthModal from '../../AuthModal/contentAuthModal';
+import { HTMLAttributes, ReactNode } from 'react';
 import ButtonClose from '../ButtonClose/buttonClose';
 
 import { Montserrat } from 'next/font/google';
@@ -10,18 +9,18 @@ const montserratFont = Montserrat({
     subsets: ['latin', 'cyrillic'],
 });
 
-export interface ModalProps {
+export interface ModalProps extends HTMLAttributes<HTMLDivElement>{
     closeModal: () => void;
-    content: JSX.Element | ReactNode;
+    insert: JSX.Element | ReactNode;
 }
 
-export default function Modal({ closeModal, content }: ModalProps) {
+export default function Modal({ closeModal, insert, ...props }: ModalProps) {
 
     return (
         <>
             <div className={styles.overlay}></div>
-            <div className={`${styles.modal} ${montserratFont.className}`}>
-                {content}
+            <div {...props} className={`${styles.modal} ${montserratFont.className}`}>
+                {insert}
                 <ButtonClose onClick={closeModal}></ButtonClose>
             </div>
         </>

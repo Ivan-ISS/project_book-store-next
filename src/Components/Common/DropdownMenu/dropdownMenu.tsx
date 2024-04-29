@@ -1,30 +1,21 @@
-import { useDispatch } from 'react-redux';
-import { RootDispatch } from '@/redux/store';
-import Link from 'next/link';
-import { signOut } from '@/redux/slices/authSlice';
 import styles from './dropdownMenu.module.scss';
-import transformPageNameToPath from '@/utils/transformName';
+import { HTMLAttributes } from 'react';
+import BurgerMenuItems from './burgerMenuItems';
+import ProfileMenuItems from './profileMenuItems';
 
-export interface DropdownMenuProps {
+export interface DropdownMenuProps extends HTMLAttributes<HTMLUListElement> {
     itemsMenu: string[];
+    insert: 'burgerMenu' | 'profileMenu';
 }
 
-export default function DropdownMenu ({ itemsMenu }: DropdownMenuProps) {
-    const dispatch = useDispatch<RootDispatch>();
-    
-    const handleItemClick = (item: string) => {
-        if (item === 'sign out') {
-            dispatch(signOut());
-        }
-    };
+export default function DropdownMenu ({ itemsMenu, insert, ...props }: DropdownMenuProps) {
 
     return (
-        <ul className={styles.list}>
+        <ul {...props} className={styles.list}>
             {itemsMenu.map((item, index) => (
                 <li key={index} className={styles.item}>
-                    <Link href={item === 'books' || item === 'sign out' ? '/' : transformPageNameToPath(item)} className={styles.link}>
-                        <span onClick={() => handleItemClick(item)}>{item}</span>
-                    </Link>
+                    { insert === 'burgerMenu' && <BurgerMenuItems itemMenu={item}/> }
+                    { insert === 'profileMenu' && <ProfileMenuItems itemMenu={item}/> }
                 </li>
             ))}
         </ul>
