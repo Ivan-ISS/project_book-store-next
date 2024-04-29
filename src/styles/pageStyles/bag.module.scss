@@ -7,22 +7,4 @@
 
 .orderPanel {
     margin-bottom: 87px;
-
-    .totalPrice {
-        font-weight: 700;
-        font-size: 24px;
-        color: $base-black;
-        text-transform: uppercase;
-        margin-bottom: 20px;
-    }
-}
-
-@media (max-width: 767px) {
-
-    .orderPanel {
-    
-        .totalPrice {
-            font-size: 18px;
-        }
-    }
 }

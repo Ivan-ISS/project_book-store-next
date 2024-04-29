@@ -38,7 +38,7 @@ export default function usePortal() {
 
     return (
         {
-            isOpen: isOpen,
+            isOpenPortal: isOpen,
             openPortal,
             closePortal,
             Portal

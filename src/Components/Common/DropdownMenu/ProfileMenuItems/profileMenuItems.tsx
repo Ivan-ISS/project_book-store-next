@@ -1,4 +1,4 @@
-import styles from './dropdownMenu.module.scss';
+import styles from './profileMenuItems.module.scss';
 import { useDispatch } from 'react-redux';
 import { RootDispatch } from '@/redux/store';
 import { signOut } from '@/redux/slices/authSlice';

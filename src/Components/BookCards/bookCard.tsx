@@ -16,7 +16,7 @@ export interface BookCardProps {
 
 export default function BookCard({ bookData }: BookCardProps) {
     const { imageCoverLinks, author, title, review, rating, description, retailPrice } = bookData;
-    const { isOpen: isOpenPortal, openPortal, closePortal, Portal } = usePortal();
+    const { isOpenPortal, openPortal, closePortal, Portal } = usePortal();
     const dispatch = useDispatch<RootDispatch>();
     const token = useSelector((state: RootState) => state.auth.token);
     const booksInBag = useSelector((state: RootState) => state.auth.bag);

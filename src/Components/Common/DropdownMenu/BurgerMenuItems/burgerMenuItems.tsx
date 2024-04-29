@@ -1,4 +1,4 @@
-import styles from './dropdownMenu.module.scss';
+import styles from './burgerMenuItems.module.scss';
 import Link from 'next/link';
 import transformPageNameToPath from '@/utils/transformName';
 

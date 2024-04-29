@@ -2,6 +2,10 @@
 @import "/src/styles/_variables";
 
 .header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background: $base-white;
 
     .container {
         min-height: 116px;
@@ -32,6 +36,7 @@
     .header {
         
         .container {
+            min-height: 70px;
             padding: 0px 15px;
         }
     }

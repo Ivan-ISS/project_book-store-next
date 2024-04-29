@@ -1,7 +1,7 @@
 import styles from './dropdownMenu.module.scss';
 import { HTMLAttributes } from 'react';
-import BurgerMenuItems from './burgerMenuItems';
-import ProfileMenuItems from './profileMenuItems';
+import BurgerMenuItems from './BurgerMenuItems/burgerMenuItems';
+import ProfileMenuItems from './ProfileMenuItems/profileMenuItems';
 
 export interface DropdownMenuProps extends HTMLAttributes<HTMLUListElement> {
     itemsMenu: string[];

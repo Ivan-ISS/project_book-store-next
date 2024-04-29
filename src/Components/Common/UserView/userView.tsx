@@ -2,14 +2,17 @@ import styles from './userView.module.scss';
 import { IUserData } from '@/types/typeUser';
 import Image from 'next/image';
 import Button from '../Button/button';
+import UserModalContent from '../Modal/UserModalContent/userModalContent';
+import Modal from '../Modal/modal';
+import usePortal from '@/hooks/usePortal';
 
 export interface UserViewProps {
     itemsUserView: string[];
     userData: IUserData;
-    handleClickBtn?: () => void;
 }
 
-export default function UserView({ itemsUserView, handleClickBtn, userData }: UserViewProps) {
+export default function UserView({ itemsUserView, userData }: UserViewProps) {
+    const { isOpenPortal, openPortal, closePortal, Portal } = usePortal();
 
     return (
         <div className={styles.userView}>
@@ -30,10 +33,11 @@ export default function UserView({ itemsUserView, handleClickBtn, userData }: Us
                         text={'Edit profile'}
                         fontSize={'small'}
                         color={'transparent'}
-                        onClick={handleClickBtn}
+                        onClick={openPortal}
                     />
                 </div>
             </div>
+            { isOpenPortal && <Portal><Modal closeModal={closePortal} insert={<UserModalContent closeModal={closePortal}/>}/></Portal> }
         </div>
     );
 }
