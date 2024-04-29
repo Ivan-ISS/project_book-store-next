@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# project_book-store-next / книжный интернет-магазин на API Google Books: React + Next.js
 
-## Getting Started
+**Для запуска проекта выполнить действия:**
 
-First, run the development server:
+- клонировать репозиторий на свой ПК: git clone https://github.com/Ivan-ISS/project_book-store-next.git;<br>
+- для режима development: последовательно выполнить команды в терминале: npm install ==> npm run dev;<br>
+- для production: последовательно выполнить команды в терминале: npm run build ==> npm run start
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Цель:
+***Создадать мультистраничное приложение интернет-магазина Bookshop с помощью файлового роутинга***
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Описание проекта
+__Проект *Book store*__ - это приложение "книжный магазин" с возможностью загрузки книг из Google Books API в соответствии с выбранной категорией и добавления ее в корзину после авторизации пользователя.<br>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+__Проект *Book store*__ представлен в виде приложения, которое позволяет:
+- Загружать список книг из Google Books API в соответствии с выбранной категорией;
+- Загружать дополнительно список книг порциями при клике на кнопку *"Load more"*;
+- Отображать список книг на экране (производится автоматически по результатам получения списка книг от сервера);
+- Авторизоваться путем нажатия на иконку пользователя;
+- Добавлять книги в корзину при клике на кнопку *"Buy now"* после авторизации пользователя;
+- Переходить на страницы пользователя и корзины с выбранными товарами;
+- Редактировать профиль на странице пользователя, нажав на кнопку *"Edit profile"*;
+- Увеличивать или уменьшать количество выбранных книг в корзине нажатием на кнопки *"плюс"* и *"минус"*;
+- Перелистывать изображения на слайдере с помощью точек под ним.<br>
 
-## Learn More
+__Интерфейс приложения__ представлен элементами:
+- *"Навигация"* - для осуществления перехода между страницами приложения;
+- *"Список категорий книг"* - при клике на категорию список книг перезагружается и отображаются книги из выбранной категории;
+- кнопка *"Load more"* - при клике загружается и отображается следующая порция книг текущей выбранной категории;
+- кнопка *"Buy now"* - при клике товар добавляется в корзину (если пользователь авторизован);
+- кнопка *"Иконка профиля"* - при клике выпадает меню авторизации;
+- кнопка *"Иконка корзины"* - при клике осуществляется переход на страницу корзины выбранных товаров;
+- кнопка *"Edit profile"* - для редактирования данных пользователя (name. email, password, about yourself);
+- поле *"Textarea"* - для редактрования данных о пользователе "About yourself";
+- кнопки *"Точки под слайдером"* - перелистывают изображения;
+- модальные окна для *"Авторизации"*, *"Редактирования данных пользователя"* и прочих сообщений;
+- выпадающие меню *"Навигации"* и *"Профиля"*.<br>
 
-To learn more about Next.js, take a look at the following resources:
+## Технологии:
+<img src="https://img.shields.io/badge/HTML5-red?logo=html5&logoColor=white" alt="HTML5"/>&nbsp;
+<img src="https://img.shields.io/badge/CSS3-blue?logo=css3&logoColor=white" alt="CSS3"/>&nbsp;
+<img src="https://img.shields.io/badge/-Sass-DB7093?logo=sass&logoColor=white" alt="SASS"/>&nbsp;
+<img src="https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white" alt="TS"/>&nbsp;
+<img src="https://img.shields.io/badge/-JavaScript-f0db4f?logo=javaScript&logoColor=black" alt="JS"/>&nbsp;
+<img src="https://img.shields.io/badge/-React-000000?logo=React&logoColor=#00fff" alt="React"/>&nbsp;
+<img src="https://img.shields.io/badge/-Redux-8a2eb2?logo=Redux&logoColor=#00fff" alt="Redux"/>&nbsp;
+<img src="https://img.shields.io/badge/-Next.js-000?logo=Next.js&logoColor=#00fff" alt="Redux"/>&nbsp;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## В проекте реализованы функциональные требования:
+&nbsp; :heavy_check_mark: Приложение содержит основные страницы: главная страница, страница пользователя и корзины с выбранными товарами<br>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+&nbsp; :heavy_check_mark: На главной странице должен быть следующий набор элементов: шапка сайта, слайдер, список категорий и список книг, карточка книги<br>
 
-## Deploy on Vercel
+&nbsp; :heavy_check_mark: Шапка:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Содержит логотип, навигацию и набор кнопок<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - При добавлении товара в корзину у иконки появляется бейджик с кол-вом товара в корзине<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - При клике на иконку пользователя открывается окно авторизации или меню профиля если уже авторизован<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - При клике на иконку корзины осуществляется переход на страницу корзины (если пользователь авторизован)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - При прокрутке сайта шапка остается закреплённой в верхней части экрана<br>
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+&nbsp; :heavy_check_mark: Слайдер:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Автоматически меняет изображения каждые 5 сек<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - После последнего изображения вновь переключается на первое<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Перелистывать изображения можно также с помощью точек под слайдером<br>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+&nbsp; :heavy_check_mark: список категорий и список книг:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Активная категория выделена визуально<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - По умолчанию в качестве активной выбрана первая категория в списке<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Клик на неактивную категорию делает её активной, и список книг перезагружается, чтобы отобразить книги из этой категории<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Книги из активной категории отображаются на экране<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Реализована ленивая загрузка: сначала подгружаются первые 6 книг, по клику на кнопку «Load more» — ещё 6, и т.д.<br>
+
+&nbsp; :heavy_check_mark: Список книг подгружается из Google Books API в соответствии с выбранной категорией.<br>
+
+&nbsp; :heavy_check_mark: Карточка книги (содержит следующую информацию):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Обложка. Если API не возвращает обложку, вместо неё добавляется картинка-плейсхолдер<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Автор. Если авторов несколько, они перечислены через запятую<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Заголовок.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Рейтинг. От 1 до 5 звёздочек и общее количество отзывов. Если нет данных рейтинга, строка не показыается<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Описание. Если текст в описании занимает больше 3-х строк, то он обрезан, а в конце добавлено многоточие<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - Цена. С указанием валюты. Если нет данных о цене, то строка не показывается<br>
+
+&nbsp; :heavy_check_mark: Под описанием каждой книги расположена кнопка «Buy now»<br>
+&nbsp; :heavy_check_mark: При клике на «Buy now» товар добавляется в корзину, а кнопка меняет внешний вид<br>
+
+&nbsp; :heavy_check_mark: На странице пользователя должен быть следующий набор элементов: кнопка и textarea для редактирования данных пользователя<br>
+
+&nbsp; :heavy_check_mark: Кнопка редактирования профиля:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - При нажатии открывается модальное окно для заполнения полей с данными пользователя<br>
+
+&nbsp; :heavy_check_mark: Textarea редактирования данных о пользователе:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - При клике на поле можно отредактировать текст, который сохраняется автоматически<br>
+
+&nbsp; :heavy_check_mark: На странице корзины должен быть следующий набор элементов: кнопки для увеличения и уменьшения товаров в корзине, кнопки выполнить заказ<br>
+
+&nbsp; :heavy_check_mark: Кнопки плюс и минус:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - При нажатии изменяется количество выбранных книг<br>
+
+&nbsp; :heavy_check_mark: Кнопка - выполнить заказ:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - При нажатии данные отправляются на сторону BFF<br>
+
+
+## В проекте реализованы технические требования:
+&nbsp; :heavy_check_mark: Проект создан с помощью Next.js<br>
+&nbsp; :heavy_check_mark: Проект написан с помощью React, Redux Toolkit и TypeScript<br>
+&nbsp; :heavy_check_mark: Использован компонентный подход<br>
+&nbsp; :heavy_check_mark: Для запросов к API используются метод createAsyncThunk<br>
+&nbsp; :heavy_check_mark: Проект использует встроенные методы Next.js для получения данных (getStaticProps или getServerSideProps)<br>
+&nbsp; :heavy_check_mark: Добавлены страницы профиля и корзины<br>
+&nbsp; :heavy_check_mark: На главной странице создан слайдер на чистом React<br>
+&nbsp; :heavy_check_mark: На главной странице присутствует фильтр по типу книг, который работает с помощью Redux Toolkit<br>
+&nbsp; :heavy_check_mark: В проекте используются API Routes в качестве BFF (Backend-For-Frontend)<br>
+&nbsp; :heavy_check_mark: В приложении работает корзина для авторизованного пользователя, в которую можно добавлять книги<br>
+&nbsp; :heavy_check_mark: Вёрстка соответствует макету<br>
+&nbsp; :heavy_check_mark: Приложение должно корректно отображаться на различных разрешениях<br>
+&nbsp; :heavy_check_mark: Отзывчивая и адаптивная верстка (десктоп, планшет и мобильные телефоны)<br>
+&nbsp; :heavy_check_mark: Использование осмысленных имен для всех переменных, классов и функций<br>
+&nbsp; :heavy_check_mark: Соблюдение правил написания кода – кодстайла<br>
+
+---
+
+**Для запуска проекта выполнить действия:**
+
+&nbsp; :heavy_check_mark: клонировать репозиторий на свой ПК: git clone https://github.com/Ivan-ISS/project_book-store-next.git;<br>
+&nbsp; :heavy_check_mark: поставить пакеты: npm install;<br>
+&nbsp; :heavy_check_mark: для режима development выполнить команду в терминале: npm run dev;<br>
+&nbsp; :heavy_check_mark: для production последовательно выполнить команды в терминале: npm run build ==> npm run start;<br>
+
+**Ссылка для просмотра проекта:** *временно отсутствует*
