@@ -38,7 +38,7 @@ export default function Layout({ children }: PropsWithChildren) {
     return (
         <>
             <Head>
-                <title>Book store</title>
+                <title>Book store ISS</title>
                 <meta name="description" content="Book store Next.js project" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
