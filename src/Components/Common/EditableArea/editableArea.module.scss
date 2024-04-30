@@ -31,3 +31,10 @@
         color: $base-gray;
     }
 }
+
+@media (max-width: 885px) {
+
+    .textArea {
+        min-height: 250px;
+    }
+}
