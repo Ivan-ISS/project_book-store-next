@@ -1,6 +1,8 @@
 # project_book-store-next / книжный интернет-магазин на API Google Books: React + Next.js
 
-**Для запуска проекта выполнить действия:**
+**Ссылка для просмотра проекта:** ***https://project-book-store-next.vercel.app/***
+
+**Для запуска проекта (на своем устройстве) выполнить действия:**
 
 - клонировать репозиторий на свой ПК: git clone https://github.com/Ivan-ISS/project_book-store-next.git;<br>
 - для режима development: последовательно выполнить команды в терминале: npm install ==> npm run dev;<br>
@@ -39,14 +41,14 @@ __Интерфейс приложения__ представлен элемен�
 - выпадающие меню *"Навигации"* и *"Профиля"*.<br>
 
 ## Технологии:
-<img src="https://img.shields.io/badge/HTML5-red?logo=html5&logoColor=white" alt="HTML5"/>&nbsp;
-<img src="https://img.shields.io/badge/CSS3-blue?logo=css3&logoColor=white" alt="CSS3"/>&nbsp;
-<img src="https://img.shields.io/badge/-Sass-DB7093?logo=sass&logoColor=white" alt="SASS"/>&nbsp;
 <img src="https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white" alt="TS"/>&nbsp;
 <img src="https://img.shields.io/badge/-JavaScript-f0db4f?logo=javaScript&logoColor=black" alt="JS"/>&nbsp;
 <img src="https://img.shields.io/badge/-React-000000?logo=React&logoColor=#00fff" alt="React"/>&nbsp;
 <img src="https://img.shields.io/badge/-Redux-8a2eb2?logo=Redux&logoColor=#00fff" alt="Redux"/>&nbsp;
 <img src="https://img.shields.io/badge/-Next.js-000?logo=Next.js&logoColor=#00fff" alt="Redux"/>&nbsp;
+<img src="https://img.shields.io/badge/HTML5-red?logo=html5&logoColor=white" alt="HTML5"/>&nbsp;
+<img src="https://img.shields.io/badge/-Sass-DB7093?logo=sass&logoColor=white" alt="SASS"/>&nbsp;
+<img src="https://img.shields.io/badge/CSS3-blue?logo=css3&logoColor=white" alt="CSS3"/>&nbsp;
 
 ## В проекте реализованы функциональные требования:
 &nbsp; :heavy_check_mark: Приложение содержит основные страницы: главная страница, страница пользователя и корзины с выбранными товарами<br>
@@ -121,11 +123,11 @@ __Интерфейс приложения__ представлен элемен�
 
 ---
 
-**Для запуска проекта выполнить действия:**
+**Для запуска проекта (на своем устройстве) выполнить действия:**
 
 &nbsp; :heavy_check_mark: клонировать репозиторий на свой ПК: git clone https://github.com/Ivan-ISS/project_book-store-next.git;<br>
 &nbsp; :heavy_check_mark: поставить пакеты: npm install;<br>
 &nbsp; :heavy_check_mark: для режима development выполнить команду в терминале: npm run dev;<br>
 &nbsp; :heavy_check_mark: для production последовательно выполнить команды в терминале: npm run build ==> npm run start;<br>
 
-**Ссылка для просмотра проекта:** *временно отсутствует*
+**Ссылка для просмотра проекта:** ***https://project-book-store-next.vercel.app/***
